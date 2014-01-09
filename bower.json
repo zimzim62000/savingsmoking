@@ -1,0 +1,15 @@
+{
+  "name": "savingsmoking",
+  "version": "0.1.0",
+  "main": "bower.json",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "zepto": "~1.1.2",
+    "airborne-zepto-fx-methods": "*",
+    "foundation": "zurb/bower-foundation"
+  }
+}

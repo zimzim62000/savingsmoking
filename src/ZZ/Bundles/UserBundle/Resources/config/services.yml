@@ -1,0 +1,7 @@
+parameters:
+    my_user_provider.class: ZZ\Bundles\UserBundle\Security\Core\User\FOSUBUserProvider
+
+services:
+    my_user_provider:
+        class: "%my_user_provider.class%"
+        arguments: [@fos_user.user_manager,{google: google_id}]
