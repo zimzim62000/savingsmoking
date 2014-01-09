@@ -1,0 +1,11 @@
+{
+  "name": "smoke",
+  "version": "0.0.1",
+  "description": "lig free smoking",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-copy": "~0.5.0"
+  }
+}
