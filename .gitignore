@@ -1,13 +1,33 @@
+#Symfony assets
 /web/bundles/
+/web/built/*
+/web/app/*
+!/web/built/.gitkeep
+!/web/app/.gitkeep
+
+#Symfony
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+
+#Symfony
 /build/
 /vendor/
 /bin/
+
+# Composer
 /composer.phar
+
+#bower
 bower_components
+
+#compass
 .sass-cache
+
+# bulshit
+UPGR*
+LICE*
+READ*
