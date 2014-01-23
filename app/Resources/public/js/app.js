@@ -78,7 +78,6 @@
                 $element.css("left", px+"px");
             }
         }
-
         $(document).ready(function(){
 
             $('div.icon-menu').on('click', function(){
@@ -90,5 +89,4 @@
             });
 
         });
-
 })(jQuery);
