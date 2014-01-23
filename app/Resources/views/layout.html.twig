@@ -3,19 +3,14 @@
 {% block menu %}
     <ul class="no-bullet">
         <li>
-            <a href="{{ path('hwi_oauth_connect') }}">{{ 'layout.app.app.index.login'|trans }}</a>
+            <a href="{{ path('zz_bundles_app_homepage') }}">
+                {{ 'layout.app.app.menu.index'|trans }}
+            </a>
         </li>
         <li>
-            <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-        </li>
-        <li>
-            <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-        </li>
-        <li>
-            <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-        </li>
-        <li>
-            <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
+            <a href="{{ path('hwi_oauth_connect') }}">
+                {{ 'layout.app.app.menu.login'|trans }}
+            </a>
         </li>
     </ul>
 {% endblock %}
