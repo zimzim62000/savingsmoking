@@ -20,6 +20,7 @@
         .on('drag', function(e){
             $page.removeClass('animateMenu');
             var deltaX = e.gesture.deltaX;
+
             if(deltaX > menu_x || deltaX < -menu_x ){
                 return;
             }
@@ -34,13 +35,13 @@
             if(Math.abs(e.gesture.deltaX) > menu_x/2) {
                 if(e.gesture.direction == 'right') {
                     showMenu();
-                } else {
+                } else if(e.gesture.direction == 'left'){
                     hideMenu();
                 }
             }else{
                 if(e.gesture.direction == 'right') {
                     hideMenu();
-                } else {
+                } else if(e.gesture.direction == 'left'){
                     showMenu();
                 }
             }
