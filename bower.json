@@ -10,6 +10,9 @@
     ],
     "dependencies": {
         "foundation": "zurb/bower-foundation",
-        "jquery": "*"
+        "jquery": "*",
+        "jqueryhammer": "https://github.com/EightMedia/jquery.hammer.js.git",
+        "jquerytransform": "https://github.com/louisremi/jquery.transform.js.git",
+        "modernizer": ""
     }
 }
