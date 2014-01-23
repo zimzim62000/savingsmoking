@@ -1,4 +1,5 @@
+=============
 savingsmoking
 =============
 
-savingsmoking repo
+savingsmoking.fr repository by Fabien Zimmermann
