@@ -15,7 +15,6 @@ module.exports = function(grunt){
                     'web/built/js/min.js': [
                         'web/app/js/jquery.min.js',
                         'web/app/js/hammer.jquery.js',
-                        'web/app/js/transform2d.jquery.js',
                         'web/app/js/modernizr.js',
                         'web/app/js/app.js'
                     ]
@@ -42,7 +41,6 @@ module.exports = function(grunt){
                     {expand: true, cwd: 'app/Resources/public/', src: ['js/**'], dest: 'web/app/', filter: 'isFile'},
                     {src: 'bower_components/jquery/jquery.min.js', dest: 'web/app/js/jquery.min.js'},
                     {src: 'bower_components/jqueryhammer/jquery.hammer.js', dest: 'web/app/js/hammer.jquery.js'},
-                    {src: 'bower_components/jquerytransform/jquery.transform2d.js', dest: 'web/app/js/transform2d.jquery.js'},
                     {src: 'bower_components/modernizr/modernizr.js', dest: 'web/app/js/modernizr.js'},
                 ]
             },
