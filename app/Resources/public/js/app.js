@@ -30,6 +30,9 @@
             if(e.gesture.direction == "left" && menuVisible){
                 animateMenu($page, (menu_x - Math.abs(deltaX)), 0);
             }
+            if(e.gesture.direction == "down" ){
+                console.log('pull to refresh ');
+            }
         })
         .on('dragend', function(e){
             if(Math.abs(e.gesture.deltaX) > menu_x/2) {
@@ -39,9 +42,9 @@
                     hideMenu();
                 }
             }else{
-                if(e.gesture.direction == 'right') {
+                if(e.gesture.direction == 'right' && !menuVisible) {
                     hideMenu();
-                } else if(e.gesture.direction == 'left'){
+                } else if(e.gesture.direction == 'left' && menuVisible){
                     showMenu();
                 }
             }
