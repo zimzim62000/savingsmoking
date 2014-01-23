@@ -35,7 +35,7 @@
 // $total-columns: 12;
 
 // We use these to control various global styles
-$body-bg: #008cba;
+$body-bg: #000000;
 // $body-font-color: #222;
 $body-font-family: 'Ubuntu Condensed', sans-serif;
 // $body-font-weight: normal;
@@ -52,6 +52,13 @@ $body-font-family: 'Ubuntu Condensed', sans-serif;
 // We use these as default colors throughout
 $primary-color: #FF3DD5;
 $secondary-color: #DE3DFF;
+$alert-color: #FF5416;
+$success-color: #16FF7B;
+$warning-color: #1673FF;
+$info-color: #1673FF;
+
+$primary-color: #23262b;
+$secondary-color: #addadd;
 $alert-color: #FF5416;
 $success-color: #16FF7B;
 $warning-color: #1673FF;

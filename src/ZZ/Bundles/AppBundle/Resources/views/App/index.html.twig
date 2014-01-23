@@ -1,43 +1,41 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block body %}
-
-<div class="row">
-    <div class="small-12 large-12 columns container">
-
-        <div class="icon-menu">
-            <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
+{% block page %}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1 class="text-center title">{{ 'layout.app.app.index.title1'|trans }}</h1>
         </div>
-
-        <div class="page" id="page">
-            <div class="row">
-                <div class="small-12 large-12 columns">
-                    <h1 class="text-center title">{{ 'layout.app.app.index.title'|trans }}</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu" id="menu">
-            <ul class="no-bullet">
-                <li>
-                    <a href="{{ path('hwi_oauth_connect') }}">{{ 'layout.app.app.index.login'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-                </li>
-                <li>
-                    <a href="#totot">{{ 'layout.app.app.index.menu1'|trans }}</a>
-                </li>
-            </ul>
-        </div>
-
     </div>
-</div>
-
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="text-center title">{{ 'layout.app.app.index.title2'|trans }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <p class="p-paddingt text-center">{{ 'layout.app.app.index.intro1'|trans }}</p>
+            <p class="p-padding">
+                {{ 'layout.app.app.index.intro2-1'|trans }}
+                <a href="#">
+                    <img title="{{ 'layout.app.app.index.googleplus'|trans }}" alt="{{ 'layout.app.app.index.googleplus'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/googleplus.png') }}"/>
+                </a>
+                <a href="#">
+                    <img title="{{ 'layout.app.app.index.facebook'|trans }}" alt="{{ 'layout.app.app.index.facebook'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/facebook.png') }}"/>
+                </a>
+                <a href="#">
+                    <img title="{{ 'layout.app.app.index.twitter'|trans }}" alt="{{ 'layout.app.app.index.twitter'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/twitter.jpg') }}"/>
+                </a>
+                {{ 'layout.app.app.index.intro2-2'|trans }}
+            </p>
+            <p class="p-padding">{{ 'layout.app.app.index.intro3'|trans }}</p>
+            <h3 class="text-center">{{ 'layout.app.app.index.intro4'|trans }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns text-center">
+            <a class="small button" href="{{ path('hwi_oauth_connect') }}">
+                {{ 'layout.app.app.index.savings'|trans }}
+            </a>
+        </div>
+    </div>
 {% endblock %}

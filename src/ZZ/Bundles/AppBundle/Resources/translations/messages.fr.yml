@@ -2,7 +2,21 @@ layout:
     app:
         app:
             index:
-                title: "Vos économies qui ne partent pas en fumée"
+                title1: "Saving Smocking"
+                title2: "Vos économies qui ne partent pas en fumée"
+                intro1: "Vous voulez arreter de fumer mais vous manquez de motivation. savingsmoking.com vas vous aider !"
+                intro2-1: "Aprés une rapide inscription via votre compte préferer"
+                intro2-2: "vous pourrez beneficier du support de toute notre équipe dans cette lutte sans merci contre la cigarette!"
+                intro3: "Jours après jours, voyez le résultat de vos efforts s'affichez sous vos yeux"
+                intro4: "Alors enfin décidé a arreter de perdre de l'argent inutilement..."
+                googleplus: "se connecter avec Google Plus"
+                facebook: "se connecter avec FaceBook"
+                twitter: "se connecter avec Twitter"
                 menu1: "Lien 1 ta vus"
                 login: "se connecter"
+                savings: "OUI, J'ARRETE !"
                 footer: "Yp lsdklqsdjkldqs klqsd klqsj mdh zh ozeh ozhoira^rioaz oraze io rêio rioê roîze^rzeio^rioâzi^rioâ^razrâz ioazr io rrazio rizrio iâz io azo iâz o^ro  ao zao^azroi rio ioa z"
+        user:
+            login:
+                title1: "Inscription / Connection"
+                title2: "Choissisez un de vos compte pour vous inscrire, merci"

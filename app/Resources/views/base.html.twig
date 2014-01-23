@@ -15,7 +15,27 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block container %}
+                <div class="row">
+                    <div class="small-12 large-12 columns container">
+                        {% block iconmenu %}
+                            <div class="icon-menu">
+                                <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
+                            </div>
+                        {% endblock %}
+                        <div class="page" id="page">
+                            {% block page %}
+                            {% endblock %}
+                        </div>
+                        <div class="menu" id="menu">
+                            {% block menu %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        {% endblock %}
         {% block javascripts %}
             {% if app.environment == 'prod' %}
                 <script type="text/javascript" src="{{ asset('built/js/min.js') }}"></script>

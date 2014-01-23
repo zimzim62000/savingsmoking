@@ -1,0 +1,24 @@
+{% extends '::layout.html.twig' %}
+
+{% block page %}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1 class="text-center title">{{ 'layout.app.user.login.title1'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="text-center">{{ 'layout.app.user.login.title2'|trans }}</h2>
+        </div>
+    </div>
+    {% if error %}
+        <span>{{ error }}</span>
+    {% endif %}
+    <ul class=text-center"">
+    {% for owner in hwi_oauth_resource_owners() %}
+        <li >
+            <a href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock page %}
