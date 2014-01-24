@@ -1,30 +1,31 @@
-/* line 13, ../scss/app.scss */
+/* line 11, ../scss/app.scss */
 body, html {
   width: 100%;
   height: 100%;
 }
 
-/* line 18, ../scss/app.scss */
+/* line 16, ../scss/app.scss */
 body {
   width: 100%;
   height: 100%;
 }
 
-/* line 23, ../scss/app.scss */
+/* line 21, ../scss/app.scss */
 .full-width {
   min-width: 100%;
 }
 
-/* line 27, ../scss/app.scss */
+/* line 25, ../scss/app.scss */
 .container {
-  height: 100%;
-  min-height: 550px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
 }
 
-/* line 33, ../scss/app.scss */
+/* line 32, ../scss/app.scss */
 .page {
-  position: absolute;
+  position: relative;
   display: block;
   background-color: #addadd;
   top: 0;
@@ -32,6 +33,7 @@ body {
   right: 0;
   bottom: 0;
   z-index: 100;
+  padding: 0.75em 0.55em;
 }
 
 /* line 44, ../scss/app.scss */
@@ -41,26 +43,25 @@ body {
   background-color: #23262b;
   top: 0;
   left: 0;
-  width: 450px;
   bottom: 0;
   z-index: 99;
   padding: 75px 0 0 30px;
 }
-/* line 54, ../scss/app.scss */
+/* line 53, ../scss/app.scss */
 .menu a {
   color: #addadd;
 }
-/* line 57, ../scss/app.scss */
+/* line 56, ../scss/app.scss */
 .menu a:hover {
   color: #cccccc;
 }
 
-/* line 62, ../scss/app.scss */
+/* line 61, ../scss/app.scss */
 h1.title {
   padding-left: 65px;
 }
 
-/* line 66, ../scss/app.scss */
+/* line 65, ../scss/app.scss */
 .animateMenu {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -69,7 +70,7 @@ h1.title {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 70, ../scss/app.scss */
+/* line 69, ../scss/app.scss */
 .icon-menu {
   width: 55px;
   height: 55px;
@@ -79,14 +80,34 @@ h1.title {
   z-index: 101;
 }
 
-/* line 79, ../scss/app.scss */
+/* line 78, ../scss/app.scss */
 p.p-padding {
   padding: 0.45em 0.75em;
   margin-bottom: 0;
 }
 
-/* line 84, ../scss/app.scss */
+/* line 83, ../scss/app.scss */
 img.img-connect {
   width: 2em;
   height: 2em;
+}
+
+/* line 88, ../scss/app.scss */
+.menutop {
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  top: -150px;
+  left: 0;
+  right: 0;
+  z-index: 102;
+  background-color: #23262b;
+}
+/* line 97, ../scss/app.scss */
+.menutop a {
+  color: #addadd;
+}
+/* line 100, ../scss/app.scss */
+.menutop a:hover {
+  color: #cccccc;
 }

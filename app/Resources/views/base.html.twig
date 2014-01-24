@@ -18,23 +18,29 @@
         {% block body %}
             {% block container %}
                 <div class="row">
-                    <div class="small-12 large-12 columns container">
-                        {% block iconmenu %}
-                            <div class="icon-menu">
-                                <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
+                    <div class="small-12 large-12 columns ">
+                        <div id="container" class="container">
+                            {% block menutop %}
+                            {% endblock menutop %}
+                            {% block iconmenu %}
+                                <div class="icon-menu">
+                                    <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
+                                </div>
+                            {% endblock %}
+                            <div class="page" id="page">
+                                {% block page %}
+                                {% endblock %}
                             </div>
-                        {% endblock %}
-                        <div class="page" id="page">
-                            {% block page %}
-                            {% endblock %}
-                        </div>
-                        <div class="menu" id="menu">
-                            {% block menu %}
-                            {% endblock %}
+                            <div class="menu" id="menu">
+                                {% block menu %}
+                                {% endblock %}
+                            </div>
                         </div>
                     </div>
                 </div>
             {% endblock %}
+            {% block footer %}
+            {% endblock footer %}
         {% endblock %}
         {% block javascripts %}
             {% if app.environment == 'prod' %}

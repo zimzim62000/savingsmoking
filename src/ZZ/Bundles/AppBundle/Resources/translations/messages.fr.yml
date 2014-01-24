@@ -1,6 +1,8 @@
 layout:
     app:
         app:
+            menutop:
+                top: "Gros phacochère"
             index:
                 title1: "Saving Smocking"
                 title2: "Vos économies qui ne partent pas en fumée"
@@ -14,9 +16,12 @@ layout:
                 twitter: "se connecter avec Twitter"
                 menu1: "Lien 1 ta vus"
                 savings: "OUI, J'ARRETE !"
+                free: "Ce service est totalement gratuit !"
             menu:
                 index: "Accueil"
                 login: "se connecter"
+            footer:
+                credit: "savingsmoking.com"
         user:
             login:
                 title1: "Inscription / Connection"

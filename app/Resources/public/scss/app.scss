@@ -1,6 +1,5 @@
 @import "compass";
 
-
 @mixin transitionZZ($transition-property, $transition-time, $method) {
   -webkit-transition: $transition-property $transition-time $method;
   -moz-transition: $transition-property $transition-time $method;
@@ -8,7 +7,6 @@
   -o-transition: $transition-property $transition-time $method;
   transition: $transition-property $transition-time $method;
 }
-
 
 body, html{
     width: 100%;
@@ -25,13 +23,14 @@ body{
 }
 
 .container{
-  height: 100%;
-  min-height: 550px;
-  overflow: hidden;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    cursor : pointer;
 }
 
 .page{
-    position: absolute;
+    position: relative;
     display: block;
     background-color: #addadd;
     top: 0;
@@ -39,6 +38,7 @@ body{
     right: 0;
     bottom: 0;
     z-index: 100;
+    padding : 0.75em 0.55em;
 }
 
 .menu{
@@ -47,7 +47,6 @@ body{
     background-color: #23262b;
     top: 0;
     left: 0;
-    width: 450px;
     bottom: 0;
     z-index: 99;
     padding: 75px 0 0 30px;
@@ -84,4 +83,21 @@ p.p-padding{
 img.img-connect{
   width : 2em;
   height : 2em;
+}
+
+.menutop{
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    top: -150px;
+    left: 0;
+    right: 0;
+    z-index: 102;
+    background-color: #23262b;
+    a{
+      color: #addadd;
+    }
+    a:hover{
+      color: #cccccc;
+    }
 }

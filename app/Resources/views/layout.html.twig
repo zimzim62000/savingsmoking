@@ -1,5 +1,18 @@
 {% extends '::base.html.twig' %}
 
+{% block menutop %}
+    <div class="menutop" id="menutop">
+        <div class="row">
+            <div class="small-12 large-12 columns text-center">
+                <p class="p-padding">
+                    <a href="#">{{ 'layout.app.app.menutop.top'|trans }}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock menutop %}
+
+
 {% block menu %}
     <ul class="no-bullet">
         <li>
@@ -14,3 +27,15 @@
         </li>
     </ul>
 {% endblock %}
+
+{% block footer %}
+
+    <footer class="row">
+        <div class="small-12 large-12 columns text-right">
+            <p class="p-padding">
+                {{ 'layout.app.app.footer.credit'|trans }}
+            </p>
+        </div>
+    </footer>
+
+{% endblock footer %}
