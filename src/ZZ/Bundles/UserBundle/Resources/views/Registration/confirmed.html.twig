@@ -1,0 +1,23 @@
+{% extends '::layout.html.twig' %}
+
+{% block page %}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1 class="text-center title">{{ 'layout.app.app.index.title1'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="text-center title">{{ 'layout.app.app.index.title2'|trans }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns text-center" >
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+            {% if app.session is not empty %}
+                {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+                {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
+            {% endif %}
+            </div>
+    </div>
+{% endblock page %}

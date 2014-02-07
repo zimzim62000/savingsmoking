@@ -11,6 +11,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  *
  * @ORM\Table(name="savingsmoke_user")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class User extends BaseUser
 {
@@ -140,5 +141,23 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function createUser()
+    {
+        $this->addRole('ROLE_USER');
+        $this->username = $this->email;
+        $this->usernameCanonical = $this->emailCanonical;
+    }
+
+    public function setEmail($email){
+        parent::setEmail($email);
+
+        if($this->getUsername() === null){
+            $this->setUsername($email);
+        }
     }
 }

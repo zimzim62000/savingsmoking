@@ -1,0 +1,25 @@
+
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <h1 class="text-center title">{{ 'layout.app.app.index.title1'|trans }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <h2 class="text-center title">{{ 'layout.app.app.index.title2'|trans }}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns text-center">
+        <div class="fos_user_user_show">
+            <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
+            <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+        </div>
+    </div>
+    <div class="small-6 large-6 columns text-center">
+        <a href="{{ path('fos_user_profile_edit') }}">{{ 'layout.app.user.profile.update'|trans }}</a>
+    </div>
+    <div class="small-6 large-6 columns text-center">
+        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.app.user.profile.logout'|trans }}</a>
+    </div>
+</div>

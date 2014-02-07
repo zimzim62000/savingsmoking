@@ -17,6 +17,7 @@ layout:
                 menu1: "Lien 1 ta vus"
                 savings: "OUI, J'ARRETE !"
                 free: "Ce service est totalement gratuit !"
+                account: "Mon compte"
             menu:
                 index: "Accueil"
                 login: "se connecter"
@@ -26,3 +27,9 @@ layout:
             login:
                 title1: "Inscription / Connection"
                 title2: "Choissisez un de vos compte pour vous inscrire, merci"
+                title3: "Ou créez votre compte !"
+                login: "se connecter"
+                register: "s'inscrire"
+            profile:
+                update: "Modifier"
+                logout: "Se déconnecter"

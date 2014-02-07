@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <h1 class="text-center title">{{ 'layout.app.app.index.title1'|trans }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <h2 class="text-center title">{{ 'layout.app.app.index.title2'|trans }}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns text-center">
+        <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+            </div>
+        </form>
+    </div>
+</div>

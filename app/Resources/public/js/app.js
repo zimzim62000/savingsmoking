@@ -12,9 +12,8 @@
     var page_y = parseInt($page.css('height').replace('px', ''));
 
     $menu.css('width', menu_x + 'px');
-    $container.css('min-height', page_y + 'px');
-
-    $page.css('position', 'absolute');
+    //$container.css('min-height', page_y + 'px');
+    //$page.css('position', 'absolute');
 
     $page.hammer()
         .on('swiperight', function(e){
