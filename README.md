@@ -12,8 +12,10 @@ prerequis
 
 node / rubis / php5
 
+```
 npm install -g grunt-cli
 npm install -g bower
+```
 
 step 1 - npm install
 
