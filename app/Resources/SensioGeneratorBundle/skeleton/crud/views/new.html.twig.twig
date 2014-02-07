@@ -1,0 +1,21 @@
+{% block extends %}
+{{ "{% extends '::layout.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block page %}" }}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1 class="text-center title">{{ entity }} creation</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            {{ '{{ form(form) }}' }}
+
+            {% set hide_edit, hide_delete = true, true %}
+            {% include 'crud/views/others/record_actions.html.twig.twig' %}
+        </div>
+    </div>
+{{ "{% endblock %}" }}
+{% endblock body %}

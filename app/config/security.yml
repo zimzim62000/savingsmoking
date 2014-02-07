@@ -21,6 +21,8 @@ security:
                 csrf_provider: form.csrf_provider
                 login_path: /login
                 check_path: /login_check
+                always_use_default_target_path: true
+                default_target_path:            /home/
             oauth:
                 resource_owners:
                     google:             "/user/login/check-google"
@@ -37,6 +39,9 @@ security:
         login:
             pattern:  ^/login$
             security: false
+            form_login:
+                always_use_default_target_path: true
+                default_target_path:            /home/
 
             remember_me:
                 key: "%secret%"
@@ -49,3 +54,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/home/$, role: ROLE_USER }
+        - { path: ^/cigarette/*, role: ROLE_ADMIN }

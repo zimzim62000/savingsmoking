@@ -1,0 +1,12 @@
+
+                <ul class="inline-list no-bullet">
+
+                {%- for action in record_actions %}
+
+                    <li>
+                        <a  class="tiny button" href="{{ "{{ path('" ~ route_name_prefix ~ "_" ~ action ~ "', { 'id': entity.id }) }}" }}">{{ action }}</a>
+                    </li>
+
+                {%- endfor %}
+
+                </ul>

@@ -1,0 +1,47 @@
+{% extends '::layout.html.twig' %}
+
+{% block page %}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1 class="text-center title">Cigarette list</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <table class="records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('zz_app_cigarette_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.name }}</td>
+                        <td>
+                <ul class="inline-list no-bullet">
+                    <li>
+                        <a  class="tiny button" href="{{ path('zz_app_cigarette_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a  class="tiny button" href="{{ path('zz_app_cigarette_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <ul class="no-bullet inline-list text-center">
+        <li>
+            <a href="{{ path('zz_app_cigarette_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

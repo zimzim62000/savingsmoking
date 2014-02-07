@@ -1,0 +1,39 @@
+{% extends '::layout.html.twig' %}
+
+{% block page %}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1 class="text-center title">Entity</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <table class="record_properties">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                            <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                            <td>{{ entity.name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                        <ul class="record_actions inline-list no-bullet">
+    <li>
+        <a href="{{ path('zz_app_cigarette') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('zz_app_cigarette_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+        </div>
+    </div>
+{% endblock %}

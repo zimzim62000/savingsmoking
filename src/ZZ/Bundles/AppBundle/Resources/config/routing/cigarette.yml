@@ -1,0 +1,30 @@
+zz_app_cigarette:
+    pattern:  /
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:index" }
+
+zz_app_cigarette_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:show" }
+
+zz_app_cigarette_new:
+    pattern:  /new
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:new" }
+
+zz_app_cigarette_create:
+    pattern:  /create
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:create" }
+    requirements: { _method: post }
+
+zz_app_cigarette_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:edit" }
+
+zz_app_cigarette_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:update" }
+    requirements: { _method: post|put }
+
+zz_app_cigarette_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ZZBundlesAppBundle:Cigarette:delete" }
+    requirements: { _method: post|delete }

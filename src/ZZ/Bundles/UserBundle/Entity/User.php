@@ -2,6 +2,7 @@
 
 namespace ZZ\Bundles\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -51,6 +52,32 @@ class User extends BaseUser
      * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
      */
     private $googleAccessToken;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ZZ\Bundles\AppBundle\Entity\UserSmoke", mappedBy="user")
+     */
+    private $usersmoke;
+
+    /**
+     * @param mixed $usersmoke
+     */
+    public function setUsersmoke($usersmoke)
+    {
+        $this->usersmoke = $usersmoke;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsersmoke()
+    {
+        return $this->usersmoke;
+    }
+
+
+
 
     /**
      * @param string $googleAccessToken
@@ -149,8 +176,6 @@ class User extends BaseUser
     public function createUser()
     {
         $this->addRole('ROLE_USER');
-        $this->username = $this->email;
-        $this->usernameCanonical = $this->emailCanonical;
     }
 
     public function setEmail($email){
@@ -159,5 +184,12 @@ class User extends BaseUser
         if($this->getUsername() === null){
             $this->setUsername($email);
         }
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->usersmoke = new ArrayCollection();
     }
 }
