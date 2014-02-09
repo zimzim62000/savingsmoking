@@ -1,132 +1,149 @@
-(function($){
+/**
+ * requestAnimationFrame and cancel polyfill
+ */
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+            window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
 
-	"use strict";
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
 
-    var $page = $('#page');
-    var $menu = $('#menu');
-    var $container = $('#container');
-    var $menutop = $('#menutop');
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
 
-    var menuVisible = false;
-    var menu_x = Math.floor(parseInt($page.css('width').replace('px', '')) / 2);
-    var page_y = parseInt($page.css('height').replace('px', ''));
 
-    $menu.css('width', menu_x + 'px');
-    //$container.css('min-height', page_y + 'px');
-    //$page.css('position', 'absolute');
+function HammerPage(element){
 
-    $page.hammer()
-        .on('swiperight', function(e){
-            showMenu();
-            e.gesture.stopDetect();
-        })
-        .on('swipeleft', function(e){
-            hideMenu();
-            e.gesture.stopDetect();
-        })
-        .on('drag', function(e){
-            $page.removeClass('animateMenu');
-            var deltaX = e.gesture.deltaX;
+    "use strict";
 
-            if(deltaX > menu_x || deltaX < -menu_x ){
-                return;
-            }
-            if(e.gesture.direction == "right" && !menuVisible){
-                animateMenu($page, deltaX, 0);
-            }
-            if(e.gesture.direction == "left" && menuVisible){
-                animateMenu($page, (menu_x - Math.abs(deltaX)), 0);
-            }
-            if(e.gesture.direction == "down" ){
-                if(e.gesture.deltaY < 150 && e.gesture.deltaY > 0){
-                    animatePullTo(e.gesture.deltaY, 0);
-                }
-            }
-        })
-        .on('dragend', function(e){
-            if(e.gesture.direction == 'down' ){
-                animatePullTo(0, 200);
-            }
-            else{
-                if(Math.abs(e.gesture.deltaX) > menu_x/2) {
-                    if(e.gesture.direction == 'right') {
-                        showMenu();
-                    } else if(e.gesture.direction == 'left'){
-                        hideMenu();
-                    }
-                }else{
-                    if(e.gesture.direction == 'right' && !menuVisible) {
-                        hideMenu();
-                    } else if(e.gesture.direction == 'left' && menuVisible){
-                        showMenu();
-                    }
-                }
-            }
+    var _self = this;
+    this.$element = $(element);
+    this.dir = false;
+
+    this.init = function(){
+
+        $(window).on("load resize orientationchange", function() {
+            _self.resizeContainer();
         });
 
-        function showMenu(){
-            animateMenu($page, menu_x, 200);
-            menuVisible = true;
+
+    };
+
+    this.resizeContainer = function(){
+        this.hideMenu();
+        this.menu_x = Math.floor(parseInt(this.$element.css('width').replace('px', '')) / 2);
+        this.page_y = parseInt(this.$element.css('height').replace('px', ''));
+    };
+
+    this.animateMenu = function($element, deltaX, delay){
+        if(delay !== 0){
+            $element.addClass('animateMenu');
+        }else{
+            $element.removeClass('animateMenu');
         }
 
-        function hideMenu(){
-            animateMenu($page, 0, 200);
-            menuVisible = false;
+        if(Modernizr.csstransforms3d) {
+            $element.css("transform", "translate3d("+ deltaX +"px,0,0) scale3d(1,1,1)");
         }
-
-        function animateMenu($element, deltaX, delay)
-        {
-            if(delay !== 0){
-                $element.removeClass('animateMenu');
-                $element.addClass('animateMenu');
-            }
-
-            if(Modernizr.csstransforms3d) {
-                $element.css("transform", "translate3d("+ deltaX +"px,0,0) scale3d(1,1,1)");
-            }
-            else if(Modernizr.csstransforms) {
-                $element.css("transform", "translate("+ deltaX +"px,0)");
-            }
-            else {
-                var px = deltaX;
-                $element.css("left", px+"px");
-            }
+        else if(Modernizr.csstransforms) {
+            $element.css("transform", "translate("+ deltaX +"px,0)");
         }
-
-        function animatePullTo(deltaY, delay)
-        {
-            if(delay !== 0){
-                $page.addClass('animateMenu');
-                $menutop.addClass('animateMenu');
-            }else{
-                $page.removeClass('animateMenu');
-                $menutop.removeClass('animateMenu');
-            }
-
-            if(Modernizr.csstransforms3d) {
-                $page.css("transform", "translate3d(0,"+ deltaY +"px,0) scale3d(1,1,1)");
-                $menutop.css("transform", "translate3d(0,"+ deltaY +"px,0) scale3d(1,1,1)");
-            }
-            else if(Modernizr.csstransforms) {
-                $page.css("transform", "translate(0,"+ deltaY +"px,)");
-                $menutop.css("transform", "translate(0,"+ deltaY +"px,)");
-            }
-            else {
-                var py = deltaY;
-                $page.css("top", py+"px");
-                $menutop.css("top", py+"px");
-            }
+        else {
+            var px = deltaX;
+            $element.css("left", px+"px");
         }
+    };
 
-        $(document).ready(function(){
+    function handleHammer(ev) {
 
-            $('div.icon-menu').on('click', function(){
-                if(menuVisible === true){
-                    hideMenu();
-                }else{
-                    showMenu();
+        ev.gesture.preventDefault();
+        var deltaX = Math.abs(ev.gesture.deltaX);
+
+        switch(ev.type) {
+
+            case 'dragleft':
+                if(_self.dir === false){
+                    _self.dir = 'left';
                 }
-            });
+                _self.animateMenu(_self.$element, (_self.menu_x - deltaX), 0);
+                break;
 
-        });
-})(jQuery);
+            case 'dragright':
+                if(_self.dir === false){
+                    _self.dir = 'right';
+                }
+                _self.animateMenu(_self.$element, deltaX, 0);
+                break;
+
+            case 'swipeleft':
+                _self.hideMenu();
+                ev.gesture.stopDetect();
+                break;
+
+            case 'swiperight':
+                _self.showMenu();
+                ev.gesture.stopDetect();
+                break;
+
+            case 'release':
+
+                if(_self.dir == 'right'){
+                    if(deltaX <= (_self.menu_x / 2 )){
+                        _self.hideMenu();
+                    }else{
+                        _self.showMenu();
+                    }
+                }else if(_self.dir == 'left'){
+                    if(deltaX <= (_self.menu_x / 2 )){
+                        _self.showMenu();
+                    }else{
+                        _self.hideMenu();
+                    }
+                }
+                _self.dir = false;
+                break;
+        }
+    }
+
+    var hammertime = new Hammer(this.$element[0], { drag_lock_to_axis: true });
+    hammertime.on("release dragleft dragright swipeleft swiperight", handleHammer);
+
+    this.showMenu = function(){
+        _self.animateMenu(_self.$element, _self.menu_x, 200);
+        _self.menuVisible = true;
+    };
+
+    this.hideMenu = function(){
+        _self.animateMenu(_self.$element, 0, 200);
+        _self.menuVisible = false;
+    };
+}
+
+$(document).ready(function(){
+
+    var mypage = new HammerPage("#page");
+    mypage.init();
+
+    $('div.icon-menu').click(function(){
+        if(mypage.menuVisible === true){
+            mypage.hideMenu();
+        }else{
+            mypage.showMenu();
+        }
+    });
+});
