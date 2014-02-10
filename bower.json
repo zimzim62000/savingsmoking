@@ -1,17 +1,18 @@
 {
-    "name": "savingsmoking",
-    "version": "0.1.0",
-    "main": "bower.json",
-    "ignore": [
-        "**/.*",
-        "Gruntfile.js",
-        "package.json",
-        "bower.json"
-    ],
-    "dependencies": {
-        "foundation": "zurb/bower-foundation",
-        "jquery": "*",
-        "jqueryhammer": "https://github.com/EightMedia/jquery.hammer.js.git",
-		"modernizr": "*"
-    }
+  "name": "savingsmoking",
+  "version": "0.1.0",
+  "main": "bower.json",
+  "ignore": [
+    "**/.*",
+    "Gruntfile.js",
+    "package.json",
+    "bower.json"
+  ],
+  "dependencies": {
+    "foundation": "zurb/bower-foundation",
+    "jquery": "*",
+    "jqueryhammer": "https://github.com/EightMedia/jquery.hammer.js.git",
+    "modernizr": "*",
+    "datepicker": ""
+  }
 }

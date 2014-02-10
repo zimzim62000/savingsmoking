@@ -4,6 +4,7 @@ namespace ZZ\Bundles\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cigarette
@@ -25,7 +26,7 @@ class Cigarette
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="validators.cigarette.name.blank")
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -33,7 +34,7 @@ class Cigarette
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="ZZ\Bundles\AppBundle\Entity\CigarettePrice", mappedBy="cigarette")
+     * @ORM\OneToMany(targetEntity="ZZ\Bundles\AppBundle\Entity\CigarettePrice", mappedBy="cigarette", cascade={"persist"})
      */
     private $price;
 
@@ -42,6 +43,9 @@ class Cigarette
      */
     public function setPrice($price)
     {
+        foreach($price as $prix){
+            $prix->setCigarette($this);
+        }
         $this->price = $price;
     }
 
@@ -97,5 +101,9 @@ class Cigarette
     public function uppercaseName()
     {
         $this->name = strtoupper($this->name);
+    }
+
+    public function __toString(){
+        return $this->getName();
     }
 }

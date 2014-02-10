@@ -3,7 +3,7 @@
 namespace ZZ\Bundles\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CigarettePrice
@@ -25,7 +25,9 @@ class CigarettePrice
     /**
      * @var ZZ\Bundles\AppBundle\Entity\Cigarette
      *
-     * @ORM\ManyToOne(targetEntity="ZZ\Bundles\AppBundle\Entity\Cigarette", inversedBy="price")
+     * @Assert\NotBlank(message="validators.cigaretteprice.cigarette.blank")
+     *
+     * @ORM\ManyToOne(targetEntity="ZZ\Bundles\AppBundle\Entity\Cigarette", inversedBy="price", cascade={"persist"})
      * @ORM\JoinColumn(name="id_cigarette", referencedColumnName="id")
      */
     private $cigarette;
@@ -33,6 +35,7 @@ class CigarettePrice
     /**
      * @var float
      *
+     * @Assert\NotBlank(message="validators.cigaretteprice.price.blank")
      * @ORM\Column(name="price", type="decimal", precision=3, scale=2)
      */
     private $price;
@@ -40,6 +43,7 @@ class CigarettePrice
     /**
      * @var \DateTime
      *
+     * @Assert\NotBlank(message="validators.cigaretteprice.dateStart.blank")
      * @ORM\Column(name="dateStart", type="date")
      */
     private $dateStart;
@@ -47,7 +51,8 @@ class CigarettePrice
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEnd", type="date")
+     * @Assert\NotBlank(message="validators.cigaretteprice.dateEnd.blank")
+     * @ORM\Column(name="dateEnd", type="date", nullable=true)
      */
     private $dateEnd;
 

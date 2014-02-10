@@ -5,3 +5,7 @@ services:
 #    zz_bundles_app.example:
 #        class: %zz_bundles_app.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    form.type.zz_collection:
+        class: ZZ\Bundles\AppBundle\Form\Type\PriceCollectionType
+        tags:
+            - { name: form.type, alias: zz_bundle_appbundle_pricecollection }

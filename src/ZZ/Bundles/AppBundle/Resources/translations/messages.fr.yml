@@ -1,8 +1,6 @@
-layout:
+views:
     app:
         app:
-            menutop:
-                top: "Gros phacochère"
             index:
                 title1: "Saving Smocking"
                 title2: "Vos économies qui ne partent pas en fumée"
@@ -18,11 +16,7 @@ layout:
                 savings: "OUI, J'ARRETE !"
                 free: "Ce service est totalement gratuit !"
                 account: "Mon compte"
-            menu:
-                index: "Accueil"
-                login: "se connecter"
-            footer:
-                credit: "savingsmoking.com"
+                hellousername: "Bonjour %username%"
         user:
             login:
                 title1: "Inscription / Connection"
@@ -33,3 +27,21 @@ layout:
             profile:
                 update: "Modifier"
                 logout: "Se déconnecter"
+layout:
+    block:
+        menu:
+            accueil: "Accueil"
+            account: "Mon compte"
+            logout: "Se déconnecter"
+            login: "Se connecter"
+            cigarette: "Cigarette"
+        footer:
+            credit: "savingsmoking.com"
+
+form:
+    cigarettetype:
+        price:
+            datachildclass: "content"
+            dataaddname: "Ajouter un prix"
+            dataname: "Prix"
+            datadeletename: "Supprimer ce prix"

@@ -1,0 +1,157 @@
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <small class="error">
+                {% for key,error in errors %}
+                    {% if key != 0 %}
+                    {% endif %}
+                    {{ error.message }}
+                {% endfor %}
+            </small>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{# fix for collection and foundation no-label #}
+{% block form_row %}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            {% if form.vars.label != 'no-label' %}
+                {{ block('form_label_start') }}
+            {% endif %}
+            {% if(form.vars.errors|length > 0) %}
+                {{ form_widget(form, {'attr': {'class' : 'error'} }) }}
+            {% else %}
+                {{ form_widget(form) }}
+            {% endif %}
+            {{ form_errors(form) }}
+            {% if form.vars.label != 'no-label' %}
+                {{ block('form_label_end') }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock form_row %}
+
+{% block form_label_start %}
+    {% spaceless %}
+        {% if label is not sameas(false) %}
+            {% if not compound %}
+                {% set label_attr = label_attr|merge({'for': id}) %}
+            {% endif %}
+            {% if required %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+            {% endif %}
+            {% if label is empty %}
+                {% set label = name|humanize %}
+            {% endif %}
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_label_start %}
+
+{% block form_label_end %}
+    {% spaceless %}
+       </label>
+    {% endspaceless %}
+{% endblock form_label_end %}
+
+
+{% block button_row %}
+    {% spaceless %}
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock button_row %}
+
+{% block form %}
+    {% spaceless %}
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock form %}
+
+{% block zz_bundle_appbundle_pricecollection_widget %}
+    {% spaceless %}
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': form_row(prototype) }) %}
+        {% endif %}
+        {{ block('zz_form_widget_compound') }}
+    {% endspaceless %}
+    <script>
+        document.ready = function(){
+            (function($){
+                $('ul.container').each(function(i, ul){
+                    var $ul = $(ul);
+                    var $link =  $('<li class="text-center"><a href="#" class="add_content small button">{{ attr.dataaddname|trans }}</a></li>');
+                    $ul.append($link);
+
+                    $ul.find('li.content').each(function(i, li){
+                        var $licontent = $(li);
+                        addTagFormDeleteLink($licontent, "{{ attr.datadeletename|trans }}");
+                    });
+
+                    $link.find('a').on('click', function(e){
+                        e.preventDefault();
+                        addTagForm($ul, $link, "{{ attr.dataname|trans }}", "{{ attr.datadeletename|trans }}");
+                    });
+                });
+            })(jQuery);
+        };
+        function addTagForm(collectionHolder, $newLinkLi, name, deletename) {
+
+            var prototype = collectionHolder.attr('data-prototype');
+
+            prototype = prototype.replace(/__name__label__/g, name);
+
+            var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+
+            var $newFormLi = $('<li  class="content th"></li>').append(newForm);
+
+            addTagFormDeleteLink($newFormLi, deletename);
+
+            $newLinkLi.before($newFormLi);
+        }
+
+        function addTagFormDeleteLink($tagFormLi, namedelete){
+            var $removeFormA = $('<div class="row"><div class="small-12 large-12 columns text-center"><a href="#" class="tiny button">'+namedelete+'</a></div></div>');
+
+            $tagFormLi.append($removeFormA);
+
+            $removeFormA.find('a').on('click', function(e) {
+                e.preventDefault();
+                $tagFormLi.remove();
+            });
+        }
+
+    </script>
+{% endblock  zz_bundle_appbundle_pricecollection_widget %}
+
+{% block zz_form_widget_compound %}
+    {% spaceless %}
+        <ul {{ block('widget_container_attributes') }}>
+            {% if form.parent is empty %}
+                {{ form_errors(form) }}
+            {% endif %}
+            {{ block('zz_form_rows') }}
+            {{ form_rest(form) }}
+        </ul>
+    {% endspaceless %}
+{% endblock zz_form_widget_compound %}
+
+{% block zz_form_rows %}
+    {% spaceless %}
+        {% for child in form %}
+            <li class="{{ attr.datachildclass|trans }} th">
+                {{ form_widget(child) }}
+            </li>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock zz_form_rows %}

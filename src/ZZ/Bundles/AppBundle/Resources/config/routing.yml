@@ -2,10 +2,6 @@ zz_bundles_app_homepage:
     pattern:  /
     defaults: { _controller: ZZBundlesAppBundle:App:index }
 
-zz_bundles_app_homepagelogued:
-    pattern:  /home/
-    defaults: { _controller: ZZBundlesAppBundle:App:indexlogued }
-
 zz_bundles_app_cigarette:
     resource: "@ZZBundlesAppBundle/Resources/config/routing/cigarette.yml"
     prefix: /cigarette

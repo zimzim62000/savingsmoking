@@ -40,14 +40,13 @@ function HammerPage(element){
         $(window).on("load resize orientationchange", function() {
             _self.resizeContainer();
         });
-
-
     };
 
     this.resizeContainer = function(){
         this.hideMenu();
         this.menu_x = Math.floor(parseInt(this.$element.css('width').replace('px', '')) / 2);
         this.page_y = parseInt(this.$element.css('height').replace('px', ''));
+        $('#menu').css('width', this.menu_x+'px');//@todo move that
     };
 
     this.animateMenu = function($element, deltaX, delay){
@@ -80,14 +79,18 @@ function HammerPage(element){
                 if(_self.dir === false){
                     _self.dir = 'left';
                 }
-                _self.animateMenu(_self.$element, (_self.menu_x - deltaX), 0);
+                if(_self.menuVisible){
+                    _self.animateMenu(_self.$element, (_self.menu_x - deltaX), 0);
+                }
                 break;
 
             case 'dragright':
                 if(_self.dir === false){
                     _self.dir = 'right';
                 }
-                _self.animateMenu(_self.$element, deltaX, 0);
+                if(!_self.menuVisible){
+                    _self.animateMenu(_self.$element, deltaX, 0);
+                }
                 break;
 
             case 'swipeleft':
@@ -139,7 +142,7 @@ $(document).ready(function(){
     var mypage = new HammerPage("#page");
     mypage.init();
 
-    $('div.icon-menu').click(function(){
+    $('#icon-menu').click(function(){
         if(mypage.menuVisible === true){
             mypage.hideMenu();
         }else{

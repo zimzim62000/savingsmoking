@@ -3,12 +3,12 @@
 {% block page %}
     <div class="row">
         <div class="small-12 large-12 columns">
-            <h1 class="text-center title">{{ 'layout.app.user.login.title1'|trans }}</h1>
+            <h1 class="text-center title">{{ 'views.HWIOAuthBundle.connect.login.title1'|trans }}</h1>
         </div>
     </div>
     <div class="row">
         <div class="small-12 large-12 columns">
-            <h2 class="text-center">{{ 'layout.app.user.login.title2'|trans }}</h2>
+            <h2 class="text-center">{{ 'views.HWIOAuthBundle.connect.login.title2'|trans }}</h2>
         </div>
     </div>
     {% if error %}
@@ -25,13 +25,13 @@
     </ul>
     <div class="row">
         <div class="small-12 large-12 columns">
-            <h2 class="text-center">{{ 'layout.app.user.login.title3'|trans }}</h2>
+            <h2 class="text-center">{{ 'views.HWIOAuthBundle.connect.login.title3'|trans }}</h2>
         </div>
         <div class="small-6 large-6 columns text-center">
-            <a href="{{ path('fos_user_security_login') }}" class="small button">{{ 'layout.app.user.login.login'|trans }}</a>
+            <a href="{{ path('fos_user_security_login') }}" class="small button">{{ 'views.HWIOAuthBundle.connect.login.login'|trans }}</a>
         </div>
         <div class="small-6 large-6 columns text-center">
-            <a href="{{ path('fos_user_registration_register') }}" class="small button">{{ 'layout.app.user.login.register'|trans }}</a>
+            <a href="{{ path('fos_user_registration_register') }}" class="small button">{{ 'views.HWIOAuthBundle.connect.login.register'|trans }}</a>
         </div>
     </div>
     {% endblock page %}

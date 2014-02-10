@@ -91,23 +91,3 @@ img.img-connect {
   width: 2em;
   height: 2em;
 }
-
-/* line 88, ../scss/app.scss */
-.menutop {
-  position: absolute;
-  width: 100%;
-  height: 150px;
-  top: -150px;
-  left: 0;
-  right: 0;
-  z-index: 102;
-  background-color: #23262b;
-}
-/* line 97, ../scss/app.scss */
-.menutop a {
-  color: #addadd;
-}
-/* line 100, ../scss/app.scss */
-.menutop a:hover {
-  color: #cccccc;
-}

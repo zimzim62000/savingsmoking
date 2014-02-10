@@ -1,0 +1,9 @@
+views:
+    HWIOAuthBundle:
+        connect:
+            login:
+                title1: "Inscription / Connection"
+                title2: "Choissisez un de vos compte, merci"
+                title3: "Ou créez votre compte !"
+                login: "se connecter"
+                register: "s'inscrire"
