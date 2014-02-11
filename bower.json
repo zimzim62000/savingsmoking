@@ -13,6 +13,5 @@
     "jquery": "*",
     "jqueryhammer": "https://github.com/EightMedia/jquery.hammer.js.git",
     "modernizr": "*",
-    "datepicker": ""
   }
 }

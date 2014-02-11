@@ -105,25 +105,38 @@ function HammerPage(element){
 
             case 'release':
 
-                if(_self.dir == 'right'){
+                if(_self.dir == 'right' && !_self.menuVisible){
                     if(deltaX <= (_self.menu_x / 2 )){
                         _self.hideMenu();
                     }else{
                         _self.showMenu();
                     }
-                }else if(_self.dir == 'left'){
+                }else if(_self.dir == 'left' && _self.menuVisible){
                     if(deltaX <= (_self.menu_x / 2 )){
                         _self.showMenu();
                     }else{
                         _self.hideMenu();
                     }
+                }else{
+                    _self.hideMenu();
                 }
+
                 _self.dir = false;
                 break;
         }
     }
 
-    var hammertime = new Hammer(this.$element[0], { drag_lock_to_axis: true });
+    var hammertime = new Hammer(this.$element[0], {
+        drag: true,
+        drag_block_horizontal: false,
+        drag_block_vertical: false,
+        drag_lock_to_axis: true,
+        drag_max_touches: 1,
+        drag_min_distance: 30,
+        swipe: true,
+        swipe_max_touches: 1,
+        swipe_velocity: 0.7
+    });
     hammertime.on("release dragleft dragright swipeleft swiperight", handleHammer);
 
     this.showMenu = function(){
