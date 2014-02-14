@@ -3,7 +3,7 @@
 namespace ZZ\Bundles\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * UserSmoke
  *
@@ -24,7 +24,7 @@ class UserSmoke
     /**
      * @var ZZ\Bundles\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="ZZ\Bundles\UserBundle\Entity\User", inversedBy="usersmoke")
+     * @ORM\OneToOne(targetEntity="\ZZ\Bundles\UserBundle\Entity\User", inversedBy="usersmoke")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
     private $user;
@@ -32,37 +32,54 @@ class UserSmoke
     /**
      * @var ZZ\Bundles\AppBundle\Entity\Cigarette
      *
+     * @Assert\NotBlank(message="validators.usersmoke.cigarette.blank")
+     *
      * @ORM\ManyToOne(targetEntity="ZZ\Bundles\AppBundle\Entity\Cigarette")
      * @ORM\JoinColumn(name="id_cigarette", referencedColumnName="id")
      */
     private $cigarette;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
+     * @Assert\NotBlank(message="validators.usersmoke.number.blank")
      * @ORM\Column(name="number", type="integer")
      */
     private $number;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateStart", type="date")
-     */
-    private $dateStart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEnd", type="date")
+     * @Assert\NotBlank(message="validators.usersmoke.dateStop.blank")
+     * @ORM\Column(name="date_stop", type="date")
      */
-    private $dateEnd;
+    private $dateStop;
+
+
+    /**
+     * @param \DateTime $dateStop
+     */
+    public function setDateStop($dateStop)
+    {
+        $this->dateStop = $dateStop;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateStop()
+    {
+        return $this->dateStop;
+    }
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -85,7 +102,7 @@ class UserSmoke
     /**
      * Get user
      *
-     * @return integer 
+     * @return integer
      */
     public function getUser()
     {
@@ -108,7 +125,7 @@ class UserSmoke
     /**
      * Get cigarette
      *
-     * @return integer 
+     * @return integer
      */
     public function getCigarette()
     {
@@ -131,56 +148,10 @@ class UserSmoke
     /**
      * Get number
      *
-     * @return integer 
+     * @return integer
      */
     public function getNumber()
     {
         return $this->number;
-    }
-
-    /**
-     * Set dateStart
-     *
-     * @param \DateTime $dateStart
-     * @return UserSmoke
-     */
-    public function setDateStart($dateStart)
-    {
-        $this->dateStart = $dateStart;
-
-        return $this;
-    }
-
-    /**
-     * Get dateStart
-     *
-     * @return \DateTime 
-     */
-    public function getDateStart()
-    {
-        return $this->dateStart;
-    }
-
-    /**
-     * Set dateEnd
-     *
-     * @param \DateTime $dateEnd
-     * @return UserSmoke
-     */
-    public function setDateEnd($dateEnd)
-    {
-        $this->dateEnd = $dateEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get dateEnd
-     *
-     * @return \DateTime 
-     */
-    public function getDateEnd()
-    {
-        return $this->dateEnd;
     }
 }

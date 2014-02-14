@@ -1,9 +1,18 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix: /user/login
+
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /user/login
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /user/login
+
 zz_bundles_app:
     resource: "@ZZBundlesAppBundle/Resources/config/routing.yml"
     prefix:   /
-
-google_login:
-    pattern: /user/login/check-google
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -28,14 +37,12 @@ zz_bundles_user:
     resource: "@ZZBundlesUserBundle/Resources/config/routing.yml"
     prefix:   /myuser
 
-hwi_oauth_security:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix: /user/login
+google_login:
+    pattern: /user/login/check-google
 
-hwi_oauth_connect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-    prefix: /user/login
+facebook_login:
+    pattern: /user/login/check_facebook
 
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix: /user/login
+twitter_login:
+    pattern: /user/login/check-twitter
+

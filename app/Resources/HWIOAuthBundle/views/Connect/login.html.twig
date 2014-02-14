@@ -14,10 +14,10 @@
     {% if error %}
         <span>{{ error }}</span>
     {% endif %}
-    <ul class="text-center no-bullet">
+    <ul class="small-block-grid-3 text-center">
     {% for owner in hwi_oauth_resource_owners() %}
-        <li >
-            <a href="{{ hwi_oauth_login_url(owner) }}">
+        <li class="text-center">
+            <a href="{{ hwi_oauth_login_url(owner) }}" class="th">
                 <img title="{{ owner | trans({}, 'HWIOAuthBundle') }}" alt="{{ owner | trans({}, 'HWIOAuthBundle') }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/'~owner~'.png') }}"/>
             </a>
         </li>

@@ -8,13 +8,11 @@ class AppController extends Controller
 {
     public function indexAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            return $this->render('ZZBundlesAppBundle:App:index.html.twig');
+        } else {
+            return $this->redirect($this->generateUrl('zz_app_usersmoke'));
+        }
 
-        return $this->render(
-            'ZZBundlesAppBundle:App:index.html.twig',
-            array(
-                'user' => $user
-            )
-        );
     }
 }

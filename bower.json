@@ -13,5 +13,6 @@
     "jquery": "*",
     "jqueryhammer": "https://github.com/EightMedia/jquery.hammer.js.git",
     "modernizr": "*",
+    "mydatepicker": "https://github.com/zimzim62000/mydatepicker.git"
   }
 }

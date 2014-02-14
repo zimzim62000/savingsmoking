@@ -25,7 +25,7 @@ module.exports = function(grunt){
         cssmin: {
             combine: {
                 files: {
-                    'web/built/css/min.css': ['web/app/css/css.css', 'web/app/css/app.css'],
+                    'web/built/css/min.css': ['web/app/css/css.css', 'web/app/css/app.css']
                 }
             }
         },
@@ -41,13 +41,13 @@ module.exports = function(grunt){
                     {expand: true, cwd: 'app/Resources/public/', src: ['js/**'], dest: 'web/app/', filter: 'isFile'},
                     {src: 'bower_components/jquery/jquery.min.js', dest: 'web/app/js/jquery.min.js'},
                     {src: 'bower_components/hammerjs/hammer.js', dest: 'web/app/js/hammer.jquery.js'},
-                    {src: 'bower_components/modernizr/modernizr.js', dest: 'web/app/js/modernizr.js'}
+                    {src: 'bower_components/modernizr/modernizr.js', dest: 'web/app/js/modernizr.js'},
                 ]
             },
 
             css: {
                 files: [
-                    {expand: true, cwd: 'app/Resources/public/', src: ['css/**'], dest: 'web/app/', filter: 'isFile'}
+                    {expand: true, cwd: 'app/Resources/public/', src: ['css/**'], dest: 'web/app/', filter: 'isFile'},
                 ]
             }
 

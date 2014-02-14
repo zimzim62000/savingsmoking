@@ -4,6 +4,7 @@
             <small class="error">
                 {% for key,error in errors %}
                     {% if key != 0 %}
+                        &nbsp;|&nbsp;
                     {% endif %}
                     {{ error.message }}
                 {% endfor %}
@@ -12,12 +13,17 @@
     {% endspaceless %}
 {% endblock form_errors %}
 
-{# fix for collection and foundation no-label #}
+{# fix for collection and foundation no-label @todo try need rebuild that #}
 {% block form_row %}
     <div class="row">
         <div class="small-12 large-12 columns">
-            {% if form.vars.label != 'no-label' and form.vars.label != '__name__label__' %}
-                {{ block('form_label_start') }}
+            {% if form.vars.attr['no-label'] is defined  and form.vars.label == '__name__label__' %}
+            {% else %}
+                {% if form.vars.attr['label-inline'] is defined %}
+                    {{ form_label(form) }}
+                {% else %}
+                    {{ block('form_label_start') }}
+                {% endif %}
             {% endif %}
             {% if(form.vars.errors|length > 0) %}
                 {{ form_widget(form, {'attr': {'class' : 'error'} }) }}
@@ -25,7 +31,8 @@
                 {{ form_widget(form) }}
             {% endif %}
             {{ form_errors(form) }}
-            {% if form.vars.label != 'no-label' and form.vars.label != '__name__label__' %}
+            {% if form.vars.attr['no-label'] is defined and form.vars.label == '__name__label__' %}
+            {% else %}
                 {{ block('form_label_end') }}
             {% endif %}
         </div>
@@ -155,3 +162,15 @@
         {% endfor %}
     {% endspaceless %}
 {% endblock zz_form_rows %}
+
+{% block zz_bundle_appbundle_datepicker_widget %}
+    {% spaceless %}
+        <ul class="small-block-grid-3">
+        {% for child in form %}
+            <li>
+                {{ form_widget(child) }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endspaceless %}
+{% endblock zz_bundle_appbundle_datepicker_widget %}

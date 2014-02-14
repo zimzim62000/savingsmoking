@@ -96,13 +96,26 @@ hwi_oauth:
     connect:
         confirmation: true
     firewall_name: main
+    http_client:
+        verify_peer: false
     fosub:
         username_iterations: 30
         properties:
             google: google_id
+            facebook: facebook_id
+            twitter: twitter_id
     resource_owners:
         google:
             type:                google
-            client_id:           740726221008-a9199j1vdjmerlhpm6ai5o2uv4b0aske.apps.googleusercontent.com
-            client_secret:       wWEYT5brzwH16eYZFlPXB4VK
-            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            client_id:           "%google_id%"
+            client_secret:       "%google_secret%"
+            scope:               "%google_scope%"
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_id%"
+            client_secret:       "%facebook_secret%"
+            scope:               "email"
+        twitter:
+            type:                twitter
+            client_id:           "%twitter_id%"
+            client_secret:       "%twitter_secret%"

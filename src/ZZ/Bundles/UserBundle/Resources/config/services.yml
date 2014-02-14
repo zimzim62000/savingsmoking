@@ -4,10 +4,15 @@ parameters:
 services:
     my_user_provider:
         class: "%my_user_provider.class%"
-        arguments: [@fos_user.user_manager,{google: google_id}]
+        arguments: [@fos_user.user_manager,{google: google_id, facebook: facebook_id, twitter: twitter_id}]
 
     zz_user.registration.form.type:
         class: ZZ\Bundles\UserBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: zz_user_registration }
+
+    zz_user.userupdate.form.type:
+        class: ZZ\Bundles\UserBundle\Form\UserUpdateType
+        tags:
+            - { name: form.type, alias: zz_bundles_userbundle_userupdate }

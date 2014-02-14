@@ -41,25 +41,14 @@ class FOSUBUserProvider extends BaseClass
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
-        $username = $response->getUsername();
-        $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
-        //when the user is registrating
-        if (null === $user) {
-            $service = $response->getResourceOwner()->getName();
-            $setter = 'set'.ucfirst($service);
-            $setter_id = $setter.'Id';
-            $setter_token = $setter.'AccessToken';
-            // create new user here
-            $user = $this->userManager->createUser();
-            $user->$setter_id($username);
-            $user->$setter_token($response->getAccessToken());
-            //I have set all requested data with the user's username
-            //modify here with relevant data
-            $user->setUsername($username);
-            $user->setEmail($username);
-            $user->setPlainPassword($username);
-            $user->setEnabled(true);
-            $this->userManager->updateUser($user);
+        $service = $response->getResourceOwner()->getName();
+        $idservice = $response->getUsername();
+        $user = $this->userManager->findUserBy(array($this->getProperty($response) => $idservice));
+
+        if($user == null){
+            $classname = 'ZZ\Bundles\UserBundle\Security\Core\User\Login'.ucfirst($service);
+            $login = new $classname($this->userManager, $response);
+            $user = $login->logMe();
             return $user;
         }
 

@@ -13,3 +13,11 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    google_id: ThisTokenIsNotSoSecretChangeIt
+    google_secret: ThisTokenIsNotSoSecretChangeIt
+    google_scope: ThisTokenIsNotSoSecretChangeIt
+    facebook_id: ThisTokenIsNotSoSecretChangeIt
+    facebook_secret: ThisTokenIsNotSoSecretChangeIt
+    twitter_id: ThisTokenIsNotSoSecretChangeIt
+    twitter_secret: ThisTokenIsNotSoSecretChangeIt

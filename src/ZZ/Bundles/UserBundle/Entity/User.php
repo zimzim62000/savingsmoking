@@ -54,9 +54,37 @@ class User extends BaseUser
     private $googleAccessToken;
 
     /**
-     * @var ArrayCollection
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="ZZ\Bundles\AppBundle\Entity\UserSmoke", mappedBy="user")
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     */
+    private $facebook_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true)
+     */
+    private $facebookAccessToken;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter_id", type="string", length=255, nullable=true)
+     */
+    private $twitter_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter_access_token", type="string", length=255, nullable=true)
+     */
+    private $twitterAccessToken;
+
+    /**
+     * @var ZZ\Bundles\AppBundle\Entity\UserSmoke
+     *
+     * @ORM\OneToOne(targetEntity="ZZ\Bundles\AppBundle\Entity\UserSmoke", mappedBy="user")
      */
     private $usersmoke;
 
@@ -186,10 +214,77 @@ class User extends BaseUser
         }
     }
 
-    public function __construct()
+    /**
+     * @param string $facebookAccessToken
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
     {
-        parent::__construct();
-
-        $this->usersmoke = new ArrayCollection();
+        $this->facebookAccessToken = $facebookAccessToken;
     }
+
+    /**
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param string $facebook_id
+     */
+    public function setFacebookId($facebook_id)
+    {
+        $this->facebook_id = $facebook_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    /**
+     * @param string $twitterAccessToken
+     */
+    public function setTwitterAccessToken($twitterAccessToken)
+    {
+        $this->twitterAccessToken = $twitterAccessToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterAccessToken()
+    {
+        return $this->twitterAccessToken;
+    }
+
+    /**
+     * @param string $twitter_id
+     */
+    public function setTwitterId($twitter_id)
+    {
+        $this->twitter_id = $twitter_id;
+    }
+
+    /**
+     * @param string $twitter_id
+     */
+    public function setTwitter_id($twitter_id)
+    {
+        $this->twitter_id = $twitter_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitter_id;
+    }
+
+
 }

@@ -3,7 +3,7 @@ views:
         connect:
             login:
                 title1: "Inscription / Connection"
-                title2: "Choissisez un de vos compte, merci"
-                title3: "Ou créez votre compte !"
+                title2: "Avec votre compte préféré !"
+                title3: "Ou directement sur savingsmoking.com !"
                 login: "se connecter"
                 register: "s'inscrire"

@@ -33,6 +33,14 @@ class CigarettePrice
     private $cigarette;
 
     /**
+     * @var integer
+     *
+     * @Assert\NotBlank(message="validators.cigaretteprice.number.blank")
+     * @ORM\Column(name="number", type="integer")
+     */
+    private $number;
+
+    /**
      * @var float
      *
      * @Assert\NotBlank(message="validators.cigaretteprice.price.blank")
@@ -157,5 +165,21 @@ class CigarettePrice
     public function getDateEnd()
     {
         return $this->dateEnd;
+    }
+
+    /**
+     * @param int $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
     }
 }

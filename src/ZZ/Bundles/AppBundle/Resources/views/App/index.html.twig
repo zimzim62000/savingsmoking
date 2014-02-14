@@ -11,48 +11,38 @@
             <h2 class="text-center title">{{ 'views.app.app.index.title2'|trans }}</h2>
         </div>
     </div>
-    {% if is_granted('ROLE_USER') %}
-        <div class="row">
-            <div class="small-12 large-12 columns">
-                <p class="p-paddingt text-center">
-                    {{ 'views.app.app.index.hellousername'|trans({'%username%': user.username }) }}
-                </p>
-            </div>
-        </div>
-    {% else %}
-        <div class="row">
-            <div class="small-12 large-12 columns">
-                <p class="p-paddingt text-center">{{ 'views.app.app.index.intro1'|trans }}</p>
-                <p class="p-padding">
-                    {{ 'views.app.app.index.intro2-1'|trans }}
-                    <a href="#">
-                        <img title="{{ 'views.app.app.index.googleplus'|trans }}" alt="{{ 'views.app.app.index.googleplus'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/google.png') }}"/>
-                    </a>
-                    <a href="#">
-                        <img title="{{ 'views.app.app.index.facebook'|trans }}" alt="{{ 'views.app.app.index.facebook'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/facebook.png') }}"/>
-                    </a>
-                    <a href="#">
-                        <img title="{{ 'layout.app.app.index.twitter'|trans }}" alt="{{ 'layout.app.app.index.twitter'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/twitter.jpg') }}"/>
-                    </a>
-                    {{ 'views.app.app.index.intro2-2'|trans }}
-                </p>
-                <p class="p-padding">{{ 'views.app.app.index.intro3'|trans }}</p>
-                <h3 class="text-center">{{ 'views.app.app.index.intro4'|trans }}</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 large-12 columns text-center">
-                <a class="small button" href="{{ path('hwi_oauth_connect') }}">
-                    {{ 'views.app.app.index.savings'|trans }}
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <p class="p-paddingt text-center">{{ 'views.app.app.index.intro1'|trans }}</p>
+            <p class="p-padding">
+                {{ 'views.app.app.index.intro2-1'|trans }}
+                <a href="#">
+                    <img title="{{ 'views.app.app.index.googleplus'|trans }}" alt="{{ 'views.app.app.index.googleplus'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/google.png') }}"/>
                 </a>
-            </div>
+                <a href="#">
+                    <img title="{{ 'views.app.app.index.facebook'|trans }}" alt="{{ 'views.app.app.index.facebook'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/facebook.png') }}"/>
+                </a>
+                <a href="#">
+                    <img title="{{ 'layout.app.app.index.twitter'|trans }}" alt="{{ 'layout.app.app.index.twitter'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/twitter.png') }}"/>
+                </a>
+                {{ 'views.app.app.index.intro2-2'|trans }}
+            </p>
+            <p class="p-padding">{{ 'views.app.app.index.intro3'|trans }}</p>
+            <h3 class="text-center">{{ 'views.app.app.index.intro4'|trans }}</h3>
         </div>
-        <div class="row">
-            <div class="small-12 large-12 columns text-center">
-                <p class="p-padding text-right">
-                    {{ 'views.app.app.index.free'|trans }}
-                </p>
-            </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns text-center">
+            <a class="small button" href="{{ path('hwi_oauth_connect') }}">
+                {{ 'views.app.app.index.savings'|trans }}
+            </a>
         </div>
-    {% endif %}
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns text-center">
+            <p class="p-padding text-right">
+                {{ 'views.app.app.index.free'|trans }}
+            </p>
+        </div>
+    </div>
 {% endblock %}

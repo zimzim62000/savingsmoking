@@ -5,3 +5,7 @@ zz_bundles_app_homepage:
 zz_bundles_app_cigarette:
     resource: "@ZZBundlesAppBundle/Resources/config/routing/cigarette.yml"
     prefix: /cigarette
+
+zz_bundles_app_cigarette:
+    resource: "@ZZBundlesAppBundle/Resources/config/routing/usersmoke.yml"
+    prefix: /home

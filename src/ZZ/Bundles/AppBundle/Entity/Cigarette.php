@@ -97,6 +97,7 @@ class Cigarette
 
     /**
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      */
     public function uppercaseName()
     {

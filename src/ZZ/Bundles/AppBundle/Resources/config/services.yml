@@ -1,11 +1,25 @@
 parameters:
-#    zz_bundles_app.example.class: ZZ\Bundles\AppBundle\Example
+    zz_bundles_app.usersmoke.class: ZZ\Bundles\AppBundle\Entity\UserSmoke
 
 services:
-#    zz_bundles_app.example:
-#        class: %zz_bundles_app.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    zz_bundles.app.usersmoke.class:
+        class: %zz_bundles_app.usersmoke.class%
+
+    form.type.zz_app_usersmoketype:
+        class: ZZ\Bundles\AppBundle\Form\UserSmokeType
+        tags:
+            - { name: form.type, alias: zz_bundles_appbundle_usersmoke }
+
     form.type.zz_collection:
         class: ZZ\Bundles\AppBundle\Form\Type\PriceCollectionType
         tags:
             - { name: form.type, alias: zz_bundle_appbundle_pricecollection }
+
+    factory.form.usersmoke:
+        class: ZZ\Bundles\AppBundle\Factory\FormUserSmokeFactory
+        arguments: [@form.factory, @security.context, @router, @zz_bundles.app.usersmoke.class, @form.type.zz_app_usersmoketype]
+
+    form.type.zz_datepicker:
+        class: ZZ\Bundles\AppBundle\Form\Type\DatePickerType
+        tags:
+            - { name: form.type, alias: zz_bundle_appbundle_datepicker }

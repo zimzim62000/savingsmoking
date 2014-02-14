@@ -45,3 +45,20 @@ form:
             dataaddname: "Ajouter un prix"
             dataname: "Prix"
             datadeletename: "Supprimer ce prix"
+    datepickertype:
+        date:
+            emptyvalue:
+                year: Année
+                month: Moi
+                day: Jour
+    usersmoketype:
+        number:
+            label: Nombre de cigarettes fumés en moyenne par jour
+            emptyvalue: 10 ? 20 ? + ?
+        dateStop:
+            label: Date à laquelle, vous avez arreté de fumer
+        cigarette:
+            emptyvalue: paquet de cigarette
+            label: Type des cigarettes que vous fumiez
+        submit:
+            label: calculez mes économies

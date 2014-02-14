@@ -24,6 +24,8 @@ security:
             oauth:
                 resource_owners:
                     google:             "/user/login/check-google"
+                    facebook:           "/user/login/check-facebook"
+                    twitter:            "/user/login/check-twitter"
                 login_path:        /user/login/
                 failure_path:      /user/login/
 
@@ -31,6 +33,7 @@ security:
                     #this is my custom user provider, created from FOSUBUserProvider - will manage the
                     #automatic user registration on your site, with data from the provider (facebook. google, etc.)
                     service: my_user_provider
+                    #service: hwi_oauth.user.provider.entity
             logout:       true
             anonymous:    true
 
