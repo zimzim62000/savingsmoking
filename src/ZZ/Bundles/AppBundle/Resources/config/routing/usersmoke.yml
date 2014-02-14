@@ -1,0 +1,30 @@
+zz_app_usersmoke:
+    pattern:  /
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:index" }
+
+zz_app_usersmoke_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:show" }
+
+zz_app_usersmoke_new:
+    pattern:  /new
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:new" }
+
+zz_app_usersmoke_create:
+    pattern:  /create
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:create" }
+    requirements: { _method: post }
+
+zz_app_usersmoke_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:edit" }
+
+zz_app_usersmoke_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:update" }
+    requirements: { _method: post|put }
+
+zz_app_usersmoke_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:delete" }
+    requirements: { _method: post|delete }

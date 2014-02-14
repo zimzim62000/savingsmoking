@@ -1,0 +1,11 @@
+validators:
+    cigarette:
+        name:
+            blank: "Le champ nom ne peux etre vide !"
+    usersmoke:
+        dateStop:
+            blank: "La date d'arret est requis "
+        number:
+            blank: "Le nombre de cigarette est requis"
+        cigarette:
+            blank: "Le type de cigarette est requis"
