@@ -19,7 +19,7 @@
 // $base-line-height: 150%;
 
 // This is the default html and body font-size for the base rem value.
-// $rem-base: 16px;
+$rem-base: 20px;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
@@ -36,7 +36,7 @@
 
 // We use these to control various global styles
 $body-bg: #000000;
-// $body-font-color: #222;
+$body-font-color: #FCFFCE;
 $body-font-family: 'Ubuntu Condensed', sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
@@ -50,23 +50,29 @@ $body-font-family: 'Ubuntu Condensed', sans-serif;
 // $default-float: left;
 
 // We use these as default colors throughout
-$primary-color: #FF3DD5;
-$secondary-color: #DE3DFF;
-$alert-color: #FF5416;
-$success-color: #16FF7B;
-$warning-color: #1673FF;
-$info-color: #1673FF;
 
-$primary-color: #23262b;
-$secondary-color: #addadd;
+$primary-color: #DB4646;
+$secondary-color: #2948E5;
 $alert-color: #FF5416;
 $success-color: #16FF7B;
 $warning-color: #1673FF;
 $info-color: #1673FF;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+//$global-radius: 5px;
 // $global-rounded: 1000px;
+
+
+$header-font-color: #DB4646;
+
+//$header-font-family;
+//$header-font-weight;
+//$header-font-style;
+//$header-font-color;
+//header-text-rendering;
+// $header-top-margin;
+//$header-bottom-margin;
+// $header-line-height;
 
 // We use these to control inset shadow shiny edges and depressions.
 // $shiny-edge-size: 0 1px 0;

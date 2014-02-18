@@ -32,7 +32,7 @@ body{
 .page{
     position: relative;
     display: block;
-    background-color: #addadd;
+    background-color: #A1A5AD;
     top: 0;
     left:0;
     right: 0;
@@ -44,22 +44,23 @@ body{
 .menu{
     position: absolute;
     display: block;
-    background-color: #23262b;
+    background-color: #BBBEC1;
     top: 0;
     left: 0;
     bottom: 0;
     z-index: 99;
     padding: 75px 0 0 30px;
     a{
-        color: #addadd;
+        color: #F7FFDB;
     }
     a:hover{
-        color: #cccccc;
+        color: #E2EDBB;
     }
 }
 
 h1.title{
   padding-left: 65px;
+  min-height: 55px;
 }
 
 .animateMenu{
