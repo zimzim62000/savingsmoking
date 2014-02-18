@@ -28,12 +28,15 @@ class UserSmokeController extends Controller
             return $this->redirect($this->generateUrl('zz_app_usersmoke_new'));
         }
 
+        return $this->showAction();
+        /*
         return $this->render(
             'ZZBundlesAppBundle:UserSmoke:index.html.twig',
             array(
                 'user' => $user,
             )
         );
+        */
     }
 
     /**
