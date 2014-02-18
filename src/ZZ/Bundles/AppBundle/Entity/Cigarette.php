@@ -35,6 +35,7 @@ class Cigarette
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="ZZ\Bundles\AppBundle\Entity\CigarettePrice", mappedBy="cigarette", cascade={"persist"})
+     * @ORM\OrderBy({"dateStart" = "ASC"})
      */
     private $price;
 
@@ -43,7 +44,7 @@ class Cigarette
      */
     public function setPrice($price)
     {
-        foreach($price as $prix){
+        foreach ($price as $prix) {
             $prix->setCigarette($this);
         }
         $this->price = $price;
@@ -60,7 +61,7 @@ class Cigarette
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +84,7 @@ class Cigarette
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -104,7 +105,8 @@ class Cigarette
         $this->name = strtoupper($this->name);
     }
 
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getName();
     }
 }

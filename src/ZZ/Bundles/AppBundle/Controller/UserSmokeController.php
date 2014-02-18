@@ -21,19 +21,21 @@ class UserSmokeController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
         /** @var $user \ZZ\Bundles\userBundle\Entity\User */
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $factoryUserForm = $this->container->get('factory.form.usersmoke');
-        $form = $factoryUserForm->build($user);
+        if ($user->getUsersmoke() === null) {
+            return $this->redirect($this->generateUrl('zz_app_usersmoke_new'));
+        }
 
-        return $this->render('ZZBundlesAppBundle:UserSmoke:index.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView()
-        ));
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:index.html.twig',
+            array(
+                'user' => $user,
+            )
+        );
     }
+
     /**
      * Creates a new UserSmoke entity.
      *
@@ -45,40 +47,47 @@ class UserSmokeController extends Controller
         /** @var $user \ZZ\Bundles\userBundle\Entity\User */
         $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $factoryUserForm = $this->container->get('factory.form.usersmoke');
-        $form = $factoryUserForm->build($user);
+        $entity = new UserSmoke();
+        $entity->setUser($user);
+        $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-        $entity = $factoryUserForm->getUserSmoke();
 
         if ($form->isValid()) {
 
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zz_app_usersmoke_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('zz_app_usersmoke_show'));
         }
 
-        return $this->render('ZZBundlesAppBundle:UserSmoke:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to create a UserSmoke entity.
-    *
-    * @param UserSmoke $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to create a UserSmoke entity.
+     *
+     * @param UserSmoke $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createCreateForm(UserSmoke $entity)
     {
-        $form = $this->createForm(new UserSmokeType(), $entity, array(
-            'action' => $this->generateUrl('zz_app_usersmoke_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new UserSmokeType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('zz_app_usersmoke_create'),
+                'method' => 'POST',
+            )
+        );
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'form.usersmoketype.submit.label'));
 
         return $form;
     }
@@ -90,33 +99,36 @@ class UserSmokeController extends Controller
     public function newAction()
     {
         $entity = new UserSmoke();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
-        return $this->render('ZZBundlesAppBundle:UserSmoke:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            )
+        );
     }
 
     /**
      * Finds and displays a UserSmoke entity.
      *
      */
-    public function showAction($id)
+    public function showAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        /** @var $user \ZZ\Bundles\userBundle\Entity\User */
+        $user = $this->container->get('security.context')->getToken()->getUser();
 
-        $entity = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->find($id);
+        $calculate = $this->container->get('zz_bundles.app.calculatesaving');
+        $calculate->setDateEnd(new \Datetime('now'))->setUser($user);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find UserSmoke entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('ZZBundlesAppBundle:UserSmoke:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:show.html.twig',
+            array(
+                'savingsmoking' => $calculate->calculateSaving(),
+                'user' => $user
+            )
+        );
     }
 
     /**
@@ -136,31 +148,39 @@ class UserSmokeController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ZZBundlesAppBundle:UserSmoke:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:edit.html.twig',
+            array(
+                'entity'      => $entity,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to edit a UserSmoke entity.
-    *
-    * @param UserSmoke $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a UserSmoke entity.
+     *
+     * @param UserSmoke $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(UserSmoke $entity)
     {
-        $form = $this->createForm(new UserSmokeType(), $entity, array(
-            'action' => $this->generateUrl('zz_app_usersmoke_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new UserSmokeType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('zz_app_usersmoke_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
+
     /**
      * Edits an existing UserSmoke entity.
      *
@@ -185,12 +205,16 @@ class UserSmokeController extends Controller
             return $this->redirect($this->generateUrl('zz_app_usersmoke_edit', array('id' => $id)));
         }
 
-        return $this->render('ZZBundlesAppBundle:UserSmoke:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:edit.html.twig',
+            array(
+                'entity'      => $entity,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
+
     /**
      * Deletes a UserSmoke entity.
      *
@@ -228,7 +252,6 @@ class UserSmokeController extends Controller
             ->setAction($this->generateUrl('zz_app_usersmoke_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

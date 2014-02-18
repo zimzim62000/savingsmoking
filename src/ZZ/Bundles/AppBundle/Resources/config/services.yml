@@ -15,11 +15,28 @@ services:
         tags:
             - { name: form.type, alias: zz_bundle_appbundle_pricecollection }
 
-    factory.form.usersmoke:
-        class: ZZ\Bundles\AppBundle\Factory\FormUserSmokeFactory
-        arguments: [@form.factory, @security.context, @router, @zz_bundles.app.usersmoke.class, @form.type.zz_app_usersmoketype]
-
     form.type.zz_datepicker:
         class: ZZ\Bundles\AppBundle\Form\Type\DatePickerType
         tags:
             - { name: form.type, alias: zz_bundle_appbundle_datepicker }
+
+    zz_bundles.app.calculatesaving:
+        class: ZZ\Bundles\AppBundle\Calculate\CalculateSaving
+        arguments: [@zz_bundles.app.calculatenumberday, @zz_bundles.app.calculateunitprice, @zz_bundles.app.calculatesavingsmoking]
+
+    zz_bundles.app.unitpriceinterval:
+        class: ZZ\Bundles\AppBundle\Model\UnitPriceInterval
+
+    zz_bundles.app.savingsmoking:
+        class: ZZ\Bundles\AppBundle\Model\SavingSmoking
+
+    zz_bundles.app.calculatenumberday:
+        class: ZZ\Bundles\AppBundle\Calculate\CalculateNumberDay
+
+    zz_bundles.app.calculatesavingsmoking:
+        class: ZZ\Bundles\AppBundle\Calculate\CalculateSavingSmoking
+        arguments: [@zz_bundles.app.savingsmoking]
+
+    zz_bundles.app.calculateunitprice:
+        class: ZZ\Bundles\AppBundle\Calculate\CalculateunitPrice
+        arguments: [@zz_bundles.app.calculatenumberday, @zz_bundles.app.unitpriceinterval]

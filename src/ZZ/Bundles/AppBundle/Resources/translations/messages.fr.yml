@@ -27,6 +27,17 @@ views:
             profile:
                 update: "Modifier"
                 logout: "Se déconnecter"
+        usersmoke:
+            new:
+                title: "Calculer mes économies"
+            show:
+                title: "mes économies"
+                time: "que je respire"
+                saving: "d'économiser !"
+                textintro1: "Super départ sergent, continué comme çà !"
+                textintro2: "Allez allez mon Lieutenant, vos effort commence a payer !"
+                textintro3: "Le plus dur est passé mon colonel, vous étes quasiment sevré !"
+                textintro4: "Waouhhhh mon général, vous êtes un exemple pour nous tous !"
 layout:
     block:
         menu:
@@ -54,7 +65,7 @@ form:
     usersmoketype:
         number:
             label: Nombre de cigarettes fumés en moyenne par jour
-            emptyvalue: 10 ? 20 ? + ?
+            emptyvalue: "nombre"
         dateStop:
             label: Date à laquelle, vous avez arreté de fumer
         cigarette:

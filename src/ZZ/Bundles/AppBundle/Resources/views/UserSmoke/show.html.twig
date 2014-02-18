@@ -3,41 +3,102 @@
 {% block page %}
     <div class="row">
         <div class="small-12 large-12 columns">
-            <h1 class="text-center title">Entity</h1>
+            <h1 class="text-center title">{{ 'views.app.usersmoke.show.title'|trans }}</h1>
         </div>
     </div>
     <div class="row">
-        <div class="small-12 large-12 columns">
-            <table class="record_properties">
-                <tbody>
-                    <tr>
-                        <th>Id</th>
-                            <td>{{ entity.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Number</th>
-                            <td>{{ entity.number }}</td>
-                    </tr>
-                    <tr>
-                        <th>Datestop</th>
-                            <td>{{ entity.dateStop|date('Y-m-d H:i:s') }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-                        <ul class="record_actions inline-list no-bullet">
-    <li>
-        <a href="{{ path('zz_app_usersmoke') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('zz_app_usersmoke_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        <div class="small-12 large-12 columns alert-box success">
+            {% set textintrotrad = 'views.app.usersmoke.show.textintro'~savingsmoking.textintro %}
+            <h2 class="text-center">
+                {{ textintrotrad|trans }}
+            </h2>
+        </div>
+        <div class="small-12 large-12 columns text-center">
+            <ul class="pricing-table">
+                <li class="title"><h3><span id="time"></span> {{ 'views.app.usersmoke.show.time'|trans }} </h3></li>
+                <li class="price"><h3><span id="saving"></span> {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.saving'|trans }}</h3></li>
+                {#
+                <li class="description">An awesome description</li>
+                <li class="bullet-item">1 Database</li>
+                <li class="bullet-item">5GB Storage</li>
+                <li class="bullet-item">20 Users</li>
+                <li class="cta-button"><a href="#" class="button">Buy Now</a></li>
+                #}
+            </ul>
         </div>
     </div>
 {% endblock %}
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script type="text/javascript">
+        (function($){
+
+            "use strict";
+
+            Number.prototype.fixeTwoDigit = function(){
+                    if(this.valueOf() < 10){
+                        return '0'+this.valueOf();
+                    }else{
+                        return this.valueOf();
+                    }
+            };
+
+            var savingtotal = {{ savingsmoking.savingTotal }};
+            var savingday = {{ savingsmoking.savingDay }};
+            var savingsecond = Math.floor((savingday/24)/3600);
+            var datestop = new Date("{{ user.usersmoke.dateStop|date('Y-m-d') }}");
+
+            function calculatepourcent(){
+                var mydate = new Date();
+                var time = ( mydate.getHours() * 3600 ) + ( mydate.getMinutes() * 60 ) + mydate.getSeconds();
+                var pourcent = ( time  / (24 * 3600 ) ) * 100;
+                return pourcent;
+            }
+
+            function calculateCountdown(baseDate) {
+                var currentTime = new Date();
+
+                var diff = currentTime.getTime() - baseDate.getTime();
+
+                return format(diff / 1000);
+
+            }
+
+            function format(seconds) {
+                var days = 0;
+                var hours = 0;
+                var minutes = 0;
+
+                if (seconds >= 3600 * 24) {
+                    days = parseInt(seconds / (3600 * 24));
+                    seconds = seconds % (3600 * 24);
+                }
+                if (seconds >= 3600) {
+                    hours = parseInt(seconds / 3600);
+                    seconds = seconds % 3600;
+                }
+                if (seconds >= 60) {
+                    minutes = parseInt(seconds / 60);
+                    seconds = seconds % 60;
+                }
+                seconds = parseInt(seconds);
+
+                var fd = days.fixeTwoDigit()+'D '+hours.fixeTwoDigit()+'H '+minutes.fixeTwoDigit()+'M '+ seconds.fixeTwoDigit()+'S';
+
+                return fd;
+            }
+
+
+            $(document).ready(function(){
+                var interval = setInterval(function(){
+                    var savsav = savingtotal + ( ( savingday * calculatepourcent() ) / 100 );
+                    $('#saving').html(savsav.toFixed(2));
+                    $('#time').html(calculateCountdown(datestop));
+                }, 1000);
+            });
+        })(jQuery);
+    </script>
+{% endblock javascripts %}

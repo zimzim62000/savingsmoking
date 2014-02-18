@@ -68,7 +68,7 @@ class CigarettePrice
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -91,7 +91,7 @@ class CigarettePrice
     /**
      * Get cigarette
      *
-     * @return integer 
+     * @return integer
      */
     public function getCigarette()
     {
@@ -114,7 +114,7 @@ class CigarettePrice
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
@@ -137,7 +137,7 @@ class CigarettePrice
     /**
      * Get dateStart
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateStart()
     {
@@ -160,7 +160,7 @@ class CigarettePrice
     /**
      * Get dateEnd
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateEnd()
     {
