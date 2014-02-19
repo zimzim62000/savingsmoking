@@ -122,6 +122,10 @@ class UserSmokeController extends Controller
         /** @var $user \ZZ\Bundles\userBundle\Entity\User */
         $user = $this->container->get('security.context')->getToken()->getUser();
 
+        if ($user->getUsersmoke() === null) {
+            return $this->redirect($this->generateUrl('zz_app_usersmoke'));
+        }
+
         $calculate = $this->container->get('zz_bundles.app.calculatesaving');
         $calculate->setDateEnd(new \Datetime('now'))->setUser($user);
 

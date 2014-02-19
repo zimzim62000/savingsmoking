@@ -2,7 +2,7 @@ views:
     app:
         app:
             index:
-                title1: "Saving Smocking"
+                title1: "Saving Smoking"
                 title2: "Vos économies qui ne partent pas en fumée"
                 intro1: "Vous voulez arreter de fumer mais vous manquez de motivation. savingsmoking.com vas vous aider !"
                 intro2-1: "Aprés une rapide inscription via votre compte préféré"
@@ -34,6 +34,15 @@ views:
                 title: "mes économies"
                 time: "que je respire"
                 saving: "d'économiser !"
+                benefit: "Arreter de fumer en quelque chffre ..."
+                savingday: "d'économie par jour"
+                numberpacket: "paquet épargné"
+                numbercigarette: "cigarette épargné"
+                goudron: "mg de goudron"
+                nicotine: "mg de nicotine"
+                monoxyde: "mg de monoxyde de carbone"
+                publie: "Je publie mon parcours"
+                day: "jour(s)"
                 textintro1: "Super départ sergent, continué comme çà !"
                 textintro2: "Allez allez mon Lieutenant, vos effort commence a payer !"
                 textintro3: "Le plus dur est passé mon colonel, vous étes quasiment sevré !"

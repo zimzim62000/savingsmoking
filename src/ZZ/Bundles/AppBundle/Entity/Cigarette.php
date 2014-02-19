@@ -32,6 +32,39 @@ class Cigarette
     private $name;
 
     /**
+     * @var integer
+     *
+     * @Assert\NotBlank(message="validators.cigarette.goudron.blank")
+     * @ORM\Column(name="goudron", type="decimal", precision=5, scale=2)
+     */
+    private $goudron;
+
+    /**
+     * @var integer
+     *
+     * @Assert\NotBlank(message="validators.cigarette.nicotine.blank")
+     * @ORM\Column(name="nicotine", type="decimal", precision=5, scale=2)
+     */
+    private $nicotine;
+
+    /**
+     * @var integer
+     *
+     * @Assert\NotBlank(message="validators.cigarette.monoxyde.blank")
+     * @ORM\Column(name="monoxyde", type="decimal", precision=5, scale=2)
+     */
+    private $monoxyde;
+
+    /**
+     * @var integer
+     *
+     * @Assert\NotBlank(message="validators.cigaretteprice.number.blank")
+     * @ORM\Column(name="number", type="integer")
+     */
+    private $number;
+
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="ZZ\Bundles\AppBundle\Entity\CigarettePrice", mappedBy="cigarette", cascade={"persist"})
@@ -108,5 +141,75 @@ class Cigarette
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @param int $goudron
+     */
+    public function setGoudron($goudron)
+    {
+        $this->goudron = $goudron;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGoudron()
+    {
+        return $this->goudron;
+    }
+
+    /**
+     * @param int $monoxyde
+     */
+    public function setMonoxyde($monoxyde)
+    {
+        $this->monoxyde = $monoxyde;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMonoxyde()
+    {
+        return $this->monoxyde;
+    }
+
+    /**
+     * @param int $nicotine
+     */
+    public function setNicotine($nicotine)
+    {
+        $this->nicotine = $nicotine;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNicotine()
+    {
+        return $this->nicotine;
+    }
+
+    /**
+     * @param int $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
     }
 }

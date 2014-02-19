@@ -22,7 +22,7 @@ services:
 
     zz_bundles.app.calculatesaving:
         class: ZZ\Bundles\AppBundle\Calculate\CalculateSaving
-        arguments: [@zz_bundles.app.calculatenumberday, @zz_bundles.app.calculateunitprice, @zz_bundles.app.calculatesavingsmoking]
+        arguments: [@zz_bundles.app.calculatenumberday, @zz_bundles.app.calculateunitprice, @zz_bundles.app.calculatesavingsmoking, @zz_bundles.app.calculateinformation]
 
     zz_bundles.app.unitpriceinterval:
         class: ZZ\Bundles\AppBundle\Model\UnitPriceInterval
@@ -40,3 +40,7 @@ services:
     zz_bundles.app.calculateunitprice:
         class: ZZ\Bundles\AppBundle\Calculate\CalculateunitPrice
         arguments: [@zz_bundles.app.calculatenumberday, @zz_bundles.app.unitpriceinterval]
+
+    zz_bundles.app.calculateinformation:
+        class: ZZ\Bundles\AppBundle\Calculate\CalculateInformation
+        arguments: [@zz_bundles.app.calculatenumberday]

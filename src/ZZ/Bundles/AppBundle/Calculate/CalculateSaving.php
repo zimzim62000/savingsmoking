@@ -9,16 +9,19 @@ class CalculateSaving
     private $calculateNumberDay;
     private $calculateUnitPrice;
     private $calculateSavingSmoking;
+    private $calculateInformation;
     private $dateEnd;
 
     public function __construct(
         CalculateNumberDay $calculateNumberDay,
         CalculateunitPrice $calculateunitprice,
-        CalculateSavingSmoking $calculateSavingSmoking
+        CalculateSavingSmoking $calculateSavingSmoking,
+        CalculateInformation $calculateInformation
     ) {
         $this->calculateNumberDay = $calculateNumberDay;
         $this->calculateUnitPrice = $calculateunitprice;
         $this->calculateSavingSmoking = $calculateSavingSmoking;
+        $this->calculateInformation = $calculateInformation;
     }
 
     public function setUser($user)
@@ -50,6 +53,10 @@ class CalculateSaving
             $this->user->getUserSmoke()
         );
 
-        return $this->calculateSavingSmoking->calculate();
+        $this->calculateInformation->setSavingsmoking($this->calculateSavingSmoking->calculate())->setUsersmoke(
+            $this->user->getUserSmoke()
+        );
+
+        return $this->calculateInformation->calculate();
     }
 }

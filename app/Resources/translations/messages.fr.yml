@@ -2,8 +2,8 @@ views:
     HWIOAuthBundle:
         connect:
             login:
-                title1: "Inscription / Connection"
+                title1: "Connection"
                 title2: "Avec votre compte préféré !"
-                title3: "Ou directement sur savingsmoking.com !"
+                title3: "Ou sur savingsmoking.com !"
                 login: "se connecter"
                 register: "s'inscrire"

@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="small-12 large-12 columns alert-box success">
+        <div class="small-12 large-12 columns ">
             {% set textintrotrad = 'views.app.usersmoke.show.textintro'~savingsmoking.textintro %}
             <h2 class="text-center">
                 {{ textintrotrad|trans }}
@@ -17,13 +17,14 @@
             <ul class="pricing-table">
                 <li class="title"><h3><span id="time"></span> {{ 'views.app.usersmoke.show.time'|trans }} </h3></li>
                 <li class="price"><h3><span id="saving"></span> {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.saving'|trans }}</h3></li>
-                {#
-                <li class="description">An awesome description</li>
-                <li class="bullet-item">1 Database</li>
-                <li class="bullet-item">5GB Storage</li>
-                <li class="bullet-item">20 Users</li>
-                <li class="cta-button"><a href="#" class="button">Buy Now</a></li>
-                #}
+                <li class="description"><h4>{{ 'views.app.usersmoke.show.benefit'|trans }}</h4></li>
+                <li class="bullet-item">{{ savingsmoking.savingDay }} {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.savingday'|trans }} </li>
+                <li class="bullet-item">{{ savingsmoking.numbercigarette }} {{ 'views.app.usersmoke.show.numbercigarette'|trans }}</li>
+                <li class="bullet-item">{{ savingsmoking.numberpacket }} {{ 'views.app.usersmoke.show.numberpacket'|trans }}</li>
+                <li class="bullet-item">{{ savingsmoking.goudron }} {{ 'views.app.usersmoke.show.goudron'|trans }}</li>
+                <li class="bullet-item">{{ savingsmoking.nicotine }} {{ 'views.app.usersmoke.show.nicotine'|trans }}</li>
+                <li class="bullet-item">{{ savingsmoking.monoxyde }} {{ 'views.app.usersmoke.show.monoxyde'|trans }}</li>
+                <li class="cta-button"><a href="#" class="button">{{ 'views.app.usersmoke.show.publie'|trans }}</a></li>
             </ul>
         </div>
     </div>
@@ -46,6 +47,7 @@
                     }
             };
 
+            var daystring = "{{ 'views.app.usersmoke.show.day'|trans }}"
             var savingtotal = {{ savingsmoking.savingTotal }};
             var savingday = {{ savingsmoking.savingDay }};
             var savingsecond = Math.floor((savingday/24)/3600);
@@ -86,7 +88,7 @@
                 }
                 seconds = parseInt(seconds);
 
-                var fd = days.fixeTwoDigit()+'D '+hours.fixeTwoDigit()+'H '+minutes.fixeTwoDigit()+'M '+ seconds.fixeTwoDigit()+'S';
+                var fd = days.fixeTwoDigit() + daystring + '  ' + hours.fixeTwoDigit() + ' H ' + minutes.fixeTwoDigit() + 'M ' + seconds.fixeTwoDigit() + 'S';
 
                 return fd;
             }

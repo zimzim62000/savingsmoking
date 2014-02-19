@@ -32,13 +32,6 @@ class CigarettePrice
      */
     private $cigarette;
 
-    /**
-     * @var integer
-     *
-     * @Assert\NotBlank(message="validators.cigaretteprice.number.blank")
-     * @ORM\Column(name="number", type="integer")
-     */
-    private $number;
 
     /**
      * @var float
@@ -63,7 +56,6 @@ class CigarettePrice
      * @ORM\Column(name="dateEnd", type="date", nullable=true)
      */
     private $dateEnd;
-
 
     /**
      * Get id
@@ -167,19 +159,4 @@ class CigarettePrice
         return $this->dateEnd;
     }
 
-    /**
-     * @param int $number
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
 }

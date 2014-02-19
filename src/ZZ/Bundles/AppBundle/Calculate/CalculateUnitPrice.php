@@ -79,7 +79,7 @@ class CalculateunitPrice
         $calculateDayInterval->setDateStart($dateStart)->setDateEnd($CigarettePrice->getDateEnd());
         $unitPriceInterval = $this->getCloneUnitPriceInterval();
         $unitPriceInterval->setInterval($calculateDayInterval->calculate());
-        $unitPriceInterval->setUnitPrice($CigarettePrice->getPrice() / $CigarettePrice->getNumber());
+        $unitPriceInterval->setUnitPrice($CigarettePrice->getPrice() / $this->cigarette->getNumber());
 
         return $unitPriceInterval;
     }
