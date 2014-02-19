@@ -55,7 +55,6 @@ function HammerPage(element){
         }else{
             $element.removeClass('animateMenu');
         }
-
         if(Modernizr.csstransforms3d) {
             $element.css("transform", "translate3d("+ deltaX +"px,0,0) scale3d(1,1,1)");
         }
@@ -80,7 +79,9 @@ function HammerPage(element){
                     _self.dir = 'left';
                 }
                 if(_self.menuVisible){
-                    _self.animateMenu(_self.$element, (_self.menu_x - deltaX), 0);
+                    if(_self.menu_x >= deltaX ){
+                        _self.animateMenu(_self.$element, (_self.menu_x - deltaX), 0);
+                    }
                 }
                 break;
 
@@ -89,7 +90,9 @@ function HammerPage(element){
                     _self.dir = 'right';
                 }
                 if(!_self.menuVisible){
-                    _self.animateMenu(_self.$element, deltaX, 0);
+                    if(_self.menu_x >= deltaX ){
+                        _self.animateMenu(_self.$element, deltaX, 0);
+                    }
                 }
                 break;
 

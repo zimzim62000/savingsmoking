@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html {% block html %}{% endblock %}>
     <head>
         <meta charset="UTF-8" />
         <META HTTP-EQUIV="Content-Language" content="fr">
@@ -8,6 +8,8 @@
         <META NAME="robots" CONTENT="index,follow">
         <META NAME="keywords" CONTENT="cv,webcv,cvweb,cv en ligne, cv pour mobile">
         <META NAME="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        {% block headshare %}
+        {% endblock %}
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {% if app.environment == 'prod' %}

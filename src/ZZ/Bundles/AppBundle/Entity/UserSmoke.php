@@ -4,11 +4,15 @@ namespace ZZ\Bundles\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * UserSmoke
  *
  * @ORM\Table(name="savingsmoke_usersmoke")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity("userlink")
  */
 class UserSmoke
 {
@@ -56,6 +60,12 @@ class UserSmoke
      */
     private $dateStop;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_link", type="string", length=255, unique=true)
+     */
+    private $userlink;
 
     /**
      * @param \DateTime $dateStop
@@ -153,5 +163,30 @@ class UserSmoke
     public function getNumber()
     {
         return $this->number;
+    }
+
+
+    /**
+     * @param string $userlink
+     */
+    public function setUserlink($userlink)
+    {
+        $this->userlink = $userlink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserlink()
+    {
+        return $this->userlink;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function createUser()
+    {
+        $this->userlink = urlencode($this->user->getUsername());
     }
 }

@@ -1,5 +1,29 @@
 {% extends '::layout.html.twig' %}
 
+{% block html %}
+    itemscope itemtype="http://schema.org/Event"
+{% endblock %}
+
+{% block title %}
+    {{ 'views.app.usersmoke.show.titleshare'|trans }}
+{% endblock %}
+
+{% block headshare %}
+    <META itemprop="name" content="{{ 'views.app.usersmoke.show.titleshare'|trans }}">
+    <META itemprop="description" content="
+    {{ 'views.app.usersmoke.show.time'|trans }}
+    {{ savingsmoking.savingTotal }} {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.saving'|trans }}
+    {{ 'views.app.usersmoke.show.benefit'|trans }}
+    {{ savingsmoking.savingDay }} {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.savingday'|trans }}
+    {{ savingsmoking.numbercigarette }} {{ 'views.app.usersmoke.show.numbercigarette'|trans }}
+    {{ savingsmoking.numberpacket }} {{ 'views.app.usersmoke.show.numberpacket'|trans }}
+    {{ savingsmoking.goudron }} {{ 'views.app.usersmoke.show.goudron'|trans }}
+    {{ savingsmoking.nicotine }} {{ 'views.app.usersmoke.show.nicotine'|trans }}
+    {{ savingsmoking.monoxyde }} {{ 'views.app.usersmoke.show.monoxyde'|trans }}
+    ">
+    <META itemprop="image" content="http://savingsmoking.com/logo.png">
+{% endblock %}
+
 {% block page %}
     <div class="row">
         <div class="small-12 large-12 columns">
@@ -14,9 +38,9 @@
             </h2>
         </div>
         <div class="small-12 large-12 columns text-center">
-            <ul class="pricing-table">
+            <ul class="pricing-table " >
                 <li class="title"><h3><span id="time"></span> {{ 'views.app.usersmoke.show.time'|trans }} </h3></li>
-                <li class="price"><h3><span id="saving"></span> {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.saving'|trans }}</h3></li>
+                <li class="price"><h3><span id="saving">{{ savingsmoking.savingTotal }}</span> {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.saving'|trans }}</h3></li>
                 <li class="description"><h4>{{ 'views.app.usersmoke.show.benefit'|trans }}</h4></li>
                 <li class="bullet-item">{{ savingsmoking.savingDay }} {{ savingsmoking.devise }} {{ 'views.app.usersmoke.show.savingday'|trans }} </li>
                 <li class="bullet-item">{{ savingsmoking.numbercigarette }} {{ 'views.app.usersmoke.show.numbercigarette'|trans }}</li>
@@ -24,7 +48,19 @@
                 <li class="bullet-item">{{ savingsmoking.goudron }} {{ 'views.app.usersmoke.show.goudron'|trans }}</li>
                 <li class="bullet-item">{{ savingsmoking.nicotine }} {{ 'views.app.usersmoke.show.nicotine'|trans }}</li>
                 <li class="bullet-item">{{ savingsmoking.monoxyde }} {{ 'views.app.usersmoke.show.monoxyde'|trans }}</li>
-                <li class="cta-button"><a href="#" class="button">{{ 'views.app.usersmoke.show.publie'|trans }}</a></li>
+                <li class="cta-button">
+                    <div class="row">
+                        <div class="small-4 columns">
+                            {% include 'ZZBundlesAppBundle:App:Include/google_share.html.twig' with{'linkshared': usersmoke.userlink} %}
+                        </div>
+                        <div class="small-4 columns">
+                            {#% include 'ZZBundlesAppBundle:App:Include/facebook_share.html.twig' %#}
+                        </div>
+                        <div class="small-4 columns">
+
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -88,7 +124,7 @@
                 }
                 seconds = parseInt(seconds);
 
-                var fd = days.fixeTwoDigit() + daystring + '  ' + hours.fixeTwoDigit() + ' H ' + minutes.fixeTwoDigit() + 'M ' + seconds.fixeTwoDigit() + 'S';
+                var fd = days.fixeTwoDigit() + daystring + '  ' + hours.fixeTwoDigit() + 'H ' + minutes.fixeTwoDigit() + 'M ' + seconds.fixeTwoDigit() + 'S';
 
                 return fd;
             }

@@ -13,9 +13,12 @@
     </div>
     <div class="row">
         <div class="small-12 large-12 columns">
-            <p class="p-paddingt text-center">
-                {{ 'views.app.app.index.hellousername'|trans({'%username%': user.username }) }}
-            </p>
+            <h3>{{ 'views.app.app.index.title3'|trans }}</h3>
+            <ul class="no-bullet inline-list">
+            {% for entity in entities %}
+                <li><a href="{{ path('zz_app_usersmoke_show', {'slug': entity.userlink} ) }}">{{ entity.user.username }}</a></li>
+            {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

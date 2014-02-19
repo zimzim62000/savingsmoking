@@ -285,6 +285,4 @@ class User extends BaseUser
     {
         return $this->twitter_id;
     }
-
-
 }

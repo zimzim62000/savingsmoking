@@ -21,22 +21,13 @@ class UserSmokeController extends Controller
      */
     public function indexAction()
     {
-        /** @var $user \ZZ\Bundles\userBundle\Entity\User */
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
 
-        if ($user->getUsersmoke() === null) {
-            return $this->redirect($this->generateUrl('zz_app_usersmoke_new'));
-        }
+        $entities = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findAll();
 
-        return $this->showAction();
-        /*
-        return $this->render(
-            'ZZBundlesAppBundle:UserSmoke:index.html.twig',
-            array(
-                'user' => $user,
-            )
-        );
-        */
+        return $this->render('ZZBundlesAppBundle:UserSmoke:index.html.twig', array(
+                'entities' => $entities,
+            ));
     }
 
     /**
@@ -117,15 +108,15 @@ class UserSmokeController extends Controller
      * Finds and displays a UserSmoke entity.
      *
      */
-    public function showAction()
+    public function showAction($slug)
     {
-        /** @var $user \ZZ\Bundles\userBundle\Entity\User */
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        if ($user->getUsersmoke() === null) {
-            return $this->redirect($this->generateUrl('zz_app_usersmoke'));
+        $em = $this->getDoctrine()->getManager();
+        $usersmoke =  $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findOneBy(array('userlink' => $slug));
+        if(!$usersmoke){
+            throw $this->createNotFoundException('Unable to find '.$slug.' report saving smoking.');
         }
 
+        $user =$usersmoke->getUser();
         $calculate = $this->container->get('zz_bundles.app.calculatesaving');
         $calculate->setDateEnd(new \Datetime('now'))->setUser($user);
 
@@ -133,7 +124,8 @@ class UserSmokeController extends Controller
             'ZZBundlesAppBundle:UserSmoke:show.html.twig',
             array(
                 'savingsmoking' => $calculate->calculateSaving(),
-                'user' => $user
+                'user' => $user,
+                'usersmoke' => $usersmoke
             )
         );
     }
