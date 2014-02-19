@@ -38,7 +38,7 @@ services:
         arguments: [@zz_bundles.app.savingsmoking]
 
     zz_bundles.app.calculateunitprice:
-        class: ZZ\Bundles\AppBundle\Calculate\CalculateunitPrice
+        class: ZZ\Bundles\AppBundle\Calculate\CalculateUnitPrice
         arguments: [@zz_bundles.app.calculatenumberday, @zz_bundles.app.unitpriceinterval]
 
     zz_bundles.app.calculateinformation:
