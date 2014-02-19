@@ -16,6 +16,11 @@ body {
 }
 
 /* line 25, ../scss/app.scss */
+.full-height {
+  min-height: 100%;
+}
+
+/* line 29, ../scss/app.scss */
 .container {
   overflow: hidden;
   position: relative;
@@ -23,46 +28,43 @@ body {
   cursor: pointer;
 }
 
-/* line 32, ../scss/app.scss */
+/* line 36, ../scss/app.scss */
 .page {
   position: relative;
   display: block;
-  background-color: #A1A5AD;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 100;
-  padding: 0.75em 0.55em;
 }
 
-/* line 44, ../scss/app.scss */
+/* line 46, ../scss/app.scss */
 .menu {
   position: absolute;
   display: block;
-  background-color: #BBBEC1;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 99;
   padding: 75px 0 0 30px;
 }
-/* line 53, ../scss/app.scss */
+/* line 54, ../scss/app.scss */
 .menu a {
-  color: #F7FFDB;
+  color: #000000;
 }
-/* line 56, ../scss/app.scss */
+/* line 57, ../scss/app.scss */
 .menu a:hover {
-  color: #E2EDBB;
+  color: #000000;
 }
 
-/* line 61, ../scss/app.scss */
+/* line 62, ../scss/app.scss */
 h1.title {
   padding-left: 65px;
   min-height: 55px;
 }
 
-/* line 66, ../scss/app.scss */
+/* line 67, ../scss/app.scss */
 .animateMenu {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -71,7 +73,7 @@ h1.title {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 70, ../scss/app.scss */
+/* line 71, ../scss/app.scss */
 .icon-menu {
   width: 55px;
   height: 55px;
@@ -81,13 +83,13 @@ h1.title {
   z-index: 101;
 }
 
-/* line 79, ../scss/app.scss */
+/* line 80, ../scss/app.scss */
 p.p-padding {
   padding: 0.45em 0.75em;
   margin-bottom: 0;
 }
 
-/* line 84, ../scss/app.scss */
+/* line 85, ../scss/app.scss */
 img.img-connect {
   width: 2em;
   height: 2em;
