@@ -51,7 +51,7 @@ class UserSmokeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zz_app_usersmoke_show'));
+            return $this->redirect($this->generateUrl('zz_app_usersmoke_show', array('slug' => $entity->getUserlink())));
         }
 
         return $this->render(
