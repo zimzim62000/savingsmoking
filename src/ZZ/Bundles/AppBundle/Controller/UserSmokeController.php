@@ -21,13 +21,29 @@ class UserSmokeController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findAll();
+            $entities = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findAll();
 
-        return $this->render('ZZBundlesAppBundle:UserSmoke:index.html.twig', array(
-                'entities' => $entities,
-            ));
+            return $this->render(
+                'ZZBundlesAppBundle:UserSmoke:index.html.twig',
+                array(
+                    'entities' => $entities,
+                )
+            );
+        } else {
+            /** @var $user \ZZ\Bundles\userBundle\Entity\User */
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            if ($user->getUsersmoke() === null) {
+                return $this->redirect($this->generateUrl('zz_app_usersmoke_new'));
+            } else {
+                return $this->redirect(
+                    $this->generateUrl('zz_app_usersmoke_show', array('slug' => $user->getUsersmoke()->getUserlink()))
+                );
+            }
+        }
+
     }
 
     /**
@@ -51,7 +67,9 @@ class UserSmokeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zz_app_usersmoke_show', array('slug' => $entity->getUserlink())));
+            return $this->redirect(
+                $this->generateUrl('zz_app_usersmoke_show', array('slug' => $entity->getUserlink()))
+            );
         }
 
         return $this->render(
@@ -111,12 +129,12 @@ class UserSmokeController extends Controller
     public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $usersmoke =  $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findOneBy(array('userlink' => $slug));
-        if(!$usersmoke){
-            throw $this->createNotFoundException('Unable to find '.$slug.' report saving smoking.');
+        $usersmoke = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findOneBy(array('userlink' => $slug));
+        if (!$usersmoke) {
+            throw $this->createNotFoundException('Unable to find ' . $slug . ' report saving smoking.');
         }
 
-        $user =$usersmoke->getUser();
+        $user = $usersmoke->getUser();
         $calculate = $this->container->get('zz_bundles.app.calculatesaving');
         $calculate->setDateEnd(new \Datetime('now'))->setUser($user);
 
@@ -124,8 +142,8 @@ class UserSmokeController extends Controller
             'ZZBundlesAppBundle:UserSmoke:show.html.twig',
             array(
                 'savingsmoking' => $calculate->calculateSaving(),
-                'user' => $user,
-                'usersmoke' => $usersmoke
+                'user'          => $user,
+                'usersmoke'     => $usersmoke
             )
         );
     }
