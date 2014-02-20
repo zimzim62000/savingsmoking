@@ -58,7 +58,7 @@ layout:
             logout: "Se déconnecter"
             login: "Se connecter"
             cigarette: "Cigarette"
-        footer:
+        pagefooter:
             credit: "savingsmoking.com"
 
 form:

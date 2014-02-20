@@ -36,3 +36,17 @@
         {% endblock menuli %}
     </ul>
 {% endblock menu %}
+
+{% block page %}
+    {% block pagefooter %}
+        <div class="full-width black white-text">
+            <div class="row">
+                <div class="small-12 columns text-right">
+                    <div class="pagefooter">
+                        {{ 'layout.block.pagefooter.credit'|trans }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock pagefooter %}
+{% endblock page %}

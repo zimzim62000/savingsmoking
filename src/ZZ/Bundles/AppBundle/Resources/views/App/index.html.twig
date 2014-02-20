@@ -2,7 +2,7 @@
 
 {% block title %}
     {{ 'views.app.app.index.titlepage'|trans }}
-{% endblock %}
+{% endblock title %}
 
 {% block page %}
     <div class="row full-width">
@@ -42,7 +42,7 @@
     <div class="row">
         <div class="small-12 large-12 columns text-center">
             <div class="button-homepage">
-                <a class="medium button round" href="{{ path('hwi_oauth_connect') }}">
+                <a class="large button round" href="{{ path('hwi_oauth_connect') }}">
                     {{ 'views.app.app.index.savings'|trans }}
                 </a>
             </div>
@@ -55,4 +55,7 @@
             </p>
         </div>
     </div>
-{% endblock %}
+    {% block pagefooter %}
+        {{ parent() }}
+    {% endblock pagefooter %}
+{% endblock page %}
