@@ -1,34 +1,35 @@
-/* line 11, ../scss/app.scss */
+/* line 12, ../scss/app.scss */
 body, html {
   width: 100%;
   height: 100%;
 }
 
-/* line 16, ../scss/app.scss */
+/* line 17, ../scss/app.scss */
 body {
   width: 100%;
   height: 100%;
 }
 
-/* line 21, ../scss/app.scss */
+/* line 22, ../scss/app.scss */
 .full-width {
-  min-width: 100%;
+  max-width: 100%;
 }
 
-/* line 25, ../scss/app.scss */
+/* line 26, ../scss/app.scss */
 .full-height {
-  min-height: 100%;
+  max-height: 100%;
 }
 
-/* line 29, ../scss/app.scss */
+/* line 30, ../scss/app.scss */
 .container {
-  overflow: hidden;
+  overflow: auto;
   position: relative;
   z-index: 1;
   cursor: pointer;
+  height: 100%;
 }
 
-/* line 36, ../scss/app.scss */
+/* line 38, ../scss/app.scss */
 .page {
   position: relative;
   display: block;
@@ -37,9 +38,11 @@ body {
   right: 0;
   bottom: 0;
   z-index: 100;
+  background-color: white;
+  height: 100%;
 }
 
-/* line 46, ../scss/app.scss */
+/* line 50, ../scss/app.scss */
 .menu {
   position: absolute;
   display: block;
@@ -48,23 +51,63 @@ body {
   bottom: 0;
   z-index: 99;
   padding: 75px 0 0 30px;
+  background-color: #7fdbff;
+  height: 100%;
 }
-/* line 54, ../scss/app.scss */
+/* line 60, ../scss/app.scss */
 .menu a {
   color: #000000;
 }
-/* line 57, ../scss/app.scss */
+/* line 63, ../scss/app.scss */
 .menu a:hover {
   color: #000000;
 }
 
-/* line 62, ../scss/app.scss */
-h1.title {
-  padding-left: 65px;
-  min-height: 55px;
+/* line 68, ../scss/app.scss */
+h1.header-title, .title-black {
+  padding: 1.5em 0 0 0;
+  font-weight: bold;
+  font-size: 5.25em;
+  text-shadow: rgba(127, 219, 255, 0.3) 2px 2px 0, rgba(127, 219, 255, 0.3) 2px 2px 0, rgba(127, 219, 255, 0.3) 3px 3px 0;
+}
+@media only screen and (max-width: 40em) {
+  /* line 68, ../scss/app.scss */
+  h1.header-title, .title-black {
+    font-size: 2.75em;
+  }
 }
 
-/* line 67, ../scss/app.scss */
+/* line 78, ../scss/app.scss */
+h2.header-title, .title-gray {
+  padding: 0.5em 0 1.5em 0;
+  font-weight: bold;
+  font-size: 2em;
+  color: #dddddd;
+  font-style: italic;
+}
+@media only screen and (max-width: 40em) {
+  /* line 78, ../scss/app.scss */
+  h2.header-title, .title-gray {
+    font-size: 1.5em;
+  }
+}
+
+/* line 89, ../scss/app.scss */
+h3.header-title, .title-red {
+  padding: 1.5em 0.5em 0.5em 0.5em;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ff4136;
+  font-style: italic;
+}
+@media only screen and (max-width: 40em) {
+  /* line 89, ../scss/app.scss */
+  h3.header-title, .title-red {
+    font-size: 1em;
+  }
+}
+
+/* line 100, ../scss/app.scss */
 .animateMenu {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -73,7 +116,7 @@ h1.title {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 71, ../scss/app.scss */
+/* line 104, ../scss/app.scss */
 .icon-menu {
   width: 55px;
   height: 55px;
@@ -83,14 +126,101 @@ h1.title {
   z-index: 101;
 }
 
-/* line 80, ../scss/app.scss */
-p.p-padding {
-  padding: 0.45em 0.75em;
-  margin-bottom: 0;
-}
-
-/* line 85, ../scss/app.scss */
+/* line 113, ../scss/app.scss */
 img.img-connect {
   width: 2em;
   height: 2em;
+}
+
+/* line 118, ../scss/app.scss */
+div.text-homepage {
+  padding: 2.5em;
+}
+@media only screen and (max-width: 40em) {
+  /* line 118, ../scss/app.scss */
+  div.text-homepage {
+    padding: 2em 0.75em;
+  }
+}
+
+/* line 124, ../scss/app.scss */
+div.button-homepage {
+  padding: 0.5em 0 2.5em 0;
+}
+@media only screen and (max-width: 40em) {
+  /* line 124, ../scss/app.scss */
+  div.button-homepage {
+    padding: 0.5em 0.75em 2.5em 0;
+  }
+}
+
+/* Color */
+/* line 132, ../scss/app.scss */
+.white {
+  background-color: white;
+}
+
+/* line 135, ../scss/app.scss */
+.blue {
+  background-color: #0074d9;
+}
+
+/* line 138, ../scss/app.scss */
+.aqua {
+  background-color: #7fdbff;
+}
+
+/* line 141, ../scss/app.scss */
+.red {
+  background-color: #ff4136;
+}
+
+/* line 144, ../scss/app.scss */
+.silver {
+  background-color: #dddddd;
+}
+
+/* line 147, ../scss/app.scss */
+.orange {
+  background-color: #ff851b;
+}
+
+/* line 150, ../scss/app.scss */
+.yellow {
+  background-color: #ffdc00;
+}
+
+/* line 155, ../scss/app.scss */
+.white-text {
+  color: white;
+}
+
+/* line 158, ../scss/app.scss */
+.aqua-text {
+  color: #7fdbff;
+}
+
+/* line 161, ../scss/app.scss */
+.blue-text {
+  color: #0074d9;
+}
+
+/* line 164, ../scss/app.scss */
+.red-text {
+  color: #ff4136;
+}
+
+/* line 167, ../scss/app.scss */
+.silver-text {
+  color: #dddddd;
+}
+
+/* line 170, ../scss/app.scss */
+.orange-text {
+  color: #ff851b;
+}
+
+/* line 173, ../scss/app.scss */
+.yellow-text {
+  color: #ffdc00;
 }

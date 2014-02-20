@@ -1,46 +1,56 @@
 {% extends '::layout.html.twig' %}
 
+{% block title %}
+    {{ 'views.app.app.index.titlepage'|trans }}
+{% endblock %}
+
 {% block page %}
-    <div class="row">
+    <div class="row full-width">
         <div class="small-12 large-12 columns">
-            <h1 class="text-center title">{{ 'views.app.app.index.title1'|trans }}</h1>
+            <h1 class="text-center header-title">{{ 'views.app.app.index.title1'|trans|raw }}</h1>
+            <h2 class="text-center header-title">{{ 'views.app.app.index.title2'|trans }}</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="small-12 large-12 columns">
-            <h2 class="text-center title">{{ 'views.app.app.index.title2'|trans }}</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-12 large-12 columns">
-            <p class="p-paddingt text-center">{{ 'views.app.app.index.intro1'|trans }}</p>
-            <p class="p-padding">
-                {{ 'views.app.app.index.intro2-1'|trans }}
-                <a href="#">
-                    <img title="{{ 'views.app.app.index.googleplus'|trans }}" alt="{{ 'views.app.app.index.googleplus'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/google.png') }}"/>
-                </a>
-                <a href="#">
-                    <img title="{{ 'views.app.app.index.facebook'|trans }}" alt="{{ 'views.app.app.index.facebook'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/facebook.png') }}"/>
-                </a>
-                <a href="#">
-                    <img title="{{ 'layout.app.app.index.twitter'|trans }}" alt="{{ 'layout.app.app.index.twitter'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/twitter.png') }}"/>
-                </a>
-                {{ 'views.app.app.index.intro2-2'|trans }}
-            </p>
-            <p class="p-padding">{{ 'views.app.app.index.intro3'|trans }}</p>
-            <h3 class="text-center">{{ 'views.app.app.index.intro4'|trans }}</h3>
+    <div class="full-width aqua">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="text-homepage text-justify">
+                    <p class="">{{ 'views.app.app.index.intro1'|trans|raw }}</p>
+                    <p class="">
+                        {{ 'views.app.app.index.intro2-1'|trans }}
+                        <a href="#">
+                            <img title="{{ 'views.app.app.index.googleplus'|trans }}" alt="{{ 'views.app.app.index.googleplus'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/google.png') }}"/>
+                        </a>
+                        <a href="#">
+                            <img title="{{ 'views.app.app.index.facebook'|trans }}" alt="{{ 'views.app.app.index.facebook'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/facebook.png') }}"/>
+                        </a>
+                        <a href="#">
+                            <img title="{{ 'layout.app.app.index.twitter'|trans }}" alt="{{ 'layout.app.app.index.twitter'|trans }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/twitter.png') }}"/>
+                        </a>
+                        {{ 'views.app.app.index.intro2-2'|trans|raw }}
+                    </p>
+                    <p class="">{{ 'views.app.app.index.intro3'|trans }}</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="small-12 large-12 columns text-center">
-            <a class="small button" href="{{ path('hwi_oauth_connect') }}">
-                {{ 'views.app.app.index.savings'|trans }}
-            </a>
+            <h3 class="text-center header-title">{{ 'views.app.app.index.title4'|trans }}</h3>
         </div>
     </div>
     <div class="row">
         <div class="small-12 large-12 columns text-center">
-            <p class="p-padding text-right">
+            <div class="button-homepage">
+                <a class="medium button round" href="{{ path('hwi_oauth_connect') }}">
+                    {{ 'views.app.app.index.savings'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row full-width">
+        <div class="small-12 large-12 columns">
+            <p class="silver-text text-right">
                 {{ 'views.app.app.index.free'|trans }}
             </p>
         </div>

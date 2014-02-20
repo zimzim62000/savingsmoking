@@ -2,14 +2,15 @@ views:
     app:
         app:
             index:
+                titlepage: "Saving Smoking : Vos économies qui ne partent pas en fumée"
                 title1: "Saving Smoking"
                 title2: "Vos économies qui ne partent pas en fumée"
                 title3: "Regardez le parcours de nos membres"
-                intro1: "Vous voulez arreter de fumer mais vous manquez de motivation. savingsmoking.com vas vous aider !"
+                intro1: "Vous voulez <strong>arreter de fumer</strong> mais vous manquez de motivation. savingsmoking.com vas vous aider !"
                 intro2-1: "Aprés une rapide inscription via votre compte préféré"
-                intro2-2: "vous pourrez beneficier du support de toute notre équipe dans cette lutte sans merci contre la cigarette!"
+                intro2-2: "vous pourrez beneficier du support de toute notre équipe dans cette lutte sans merci <strong>contre la cigarette!</strong>"
                 intro3: "Jours après jours, voyez le résultat de vos efforts s'affichez sous vos yeux. Regarder le parcours de vos amis et boostez-vous."
-                intro4: "Alors enfin décidé a arreter de perdre de l'argent inutilement..."
+                title4: "Alors enfin décidé a arreter de perdre de l'argent inutilement ?"
                 googleplus: "se connecter avec Google Plus"
                 facebook: "se connecter avec FaceBook"
                 twitter: "se connecter avec Twitter"

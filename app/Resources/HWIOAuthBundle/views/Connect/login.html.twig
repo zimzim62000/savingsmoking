@@ -3,35 +3,33 @@
 {% block page %}
     <div class="row">
         <div class="small-12 large-12 columns">
-            <h1 class="text-center title">{{ 'views.HWIOAuthBundle.connect.login.title1'|trans }}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-12 large-12 columns">
-            <h2 class="text-center">{{ 'views.HWIOAuthBundle.connect.login.title2'|trans }}</h2>
+            <h1 class="text-center title-black">{{ 'views.HWIOAuthBundle.connect.login.title1'|trans }}</h1>
+            <h2 class="text-center title-red">{{ 'views.HWIOAuthBundle.connect.login.title2'|trans }}</h2>
         </div>
     </div>
     {% if error %}
         <span>{{ error }}</span>
     {% endif %}
-    <ul class="small-block-grid-3 text-center">
-    {% for owner in hwi_oauth_resource_owners() %}
-        <li class="text-center">
-            <a href="{{ hwi_oauth_login_url(owner) }}" class="th">
-                <img title="{{ owner | trans({}, 'HWIOAuthBundle') }}" alt="{{ owner | trans({}, 'HWIOAuthBundle') }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/'~owner~'.png') }}"/>
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="full-width aqua text-homepage">
+        <ul class="small-block-grid-3 text-center">
+        {% for owner in hwi_oauth_resource_owners() %}
+            <li class="text-center">
+                <a href="{{ hwi_oauth_login_url(owner) }}" class="th">
+                    <img title="{{ owner | trans({}, 'HWIOAuthBundle') }}" alt="{{ owner | trans({}, 'HWIOAuthBundle') }}" class="img-connect" src="{{ asset('bundles/zzbundlesapp/images/'~owner~'.png') }}"/>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
     <div class="row">
         <div class="small-12 large-12 columns">
-            <h2 class="text-center">{{ 'views.HWIOAuthBundle.connect.login.title3'|trans }}</h2>
+            <h2 class="text-center title-gray">{{ 'views.HWIOAuthBundle.connect.login.title3'|trans }}</h2>
         </div>
         <div class="small-6 large-6 columns text-center">
-            <a href="{{ path('fos_user_security_login') }}" class="small button">{{ 'views.HWIOAuthBundle.connect.login.login'|trans }}</a>
+            <a href="{{ path('fos_user_security_login') }}" class="small button round">{{ 'views.HWIOAuthBundle.connect.login.login'|trans }}</a>
         </div>
         <div class="small-6 large-6 columns text-center">
-            <a href="{{ path('fos_user_registration_register') }}" class="small button">{{ 'views.HWIOAuthBundle.connect.login.register'|trans }}</a>
+            <a href="{{ path('fos_user_registration_register') }}" class="small button round">{{ 'views.HWIOAuthBundle.connect.login.register'|trans }}</a>
         </div>
     </div>
     {% endblock page %}

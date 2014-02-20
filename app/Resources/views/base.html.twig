@@ -4,13 +4,13 @@
         <meta charset="UTF-8" />
         <META HTTP-EQUIV="Content-Language" content="fr">
         <META NAME="language" content="French">
-        <META NAME="identifier-url" CONTENT="http://www.webcv.fr/">
+        <META NAME="identifier-url" CONTENT="http://www.savingsmoking.com">
         <META NAME="robots" CONTENT="index,follow">
-        <META NAME="keywords" CONTENT="cv,webcv,cvweb,cv en ligne, cv pour mobile">
+        <META NAME="keywords" CONTENT="arreter de fumer, economie en arretant de fumer, calculateur d'économie ">
         <META NAME="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         {% block headshare %}
         {% endblock %}
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
             {% if app.environment == 'prod' %}
                 <link rel="stylesheet" href="{{ asset('built/css/min.css') }}"" />
@@ -28,7 +28,7 @@
                 <div id="container" class="container">
                     {% block iconmenu %}
                         <div class="icon-menu" id="icon-menu">
-                            <img src="{{ asset('bundles/zzbundlesapp/images/menu_white.png') }}"/>
+                            <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
                         </div>
                     {% endblock %}
                     <div class="page" id="page">
