@@ -33,8 +33,6 @@
                     {% endblock %}
                     <div class="page" id="page">
                         {% block page %}
-                            {% block pagefooter %}
-                            {% endblock %}
                         {% endblock %}
                     </div>
                     <div class="menu" id="menu">
@@ -42,10 +40,10 @@
                         {% endblock %}
                     </div>
                 </div>
-            {% endblock %}
+            {% endblock container %}
             {% block footer %}
             {% endblock footer %}
-        {% endblock %}
+        {% endblock body %}
         {% block javascripts %}
             {% if app.environment == 'prod' %}
                 <script type="text/javascript" src="{{ asset('built/js/min.js') }}"></script>
