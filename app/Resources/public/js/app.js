@@ -34,7 +34,7 @@ function HammerPage(element){
     var _self = this;
     this.$element = $(element);
     this.dir = false;
-
+    this.release = false;
     this.init = function(){
 
         $(window).on("load resize orientationchange", function() {
@@ -44,9 +44,7 @@ function HammerPage(element){
 
     this.resizeContainer = function(){
         this.hideMenu();
-        this.menu_x = Math.floor(parseInt(this.$element.css('width').replace('px', '')) / 2);
-        this.page_y = parseInt(this.$element.css('height').replace('px', ''));
-        $('#menu').css('width', this.menu_x+'px');//@todo move that
+        this.menu_x = Math.floor(parseInt($('#menu').css('width').replace('px', '')));
     };
 
     this.animateMenu = function($element, deltaX, delay){
@@ -75,6 +73,7 @@ function HammerPage(element){
         switch(ev.type) {
 
             case 'dragleft':
+                _self.release = true;
                 if(_self.dir === false){
                     _self.dir = 'left';
                 }
@@ -86,6 +85,7 @@ function HammerPage(element){
                 break;
 
             case 'dragright':
+                _self.release = true;
                 if(_self.dir === false){
                     _self.dir = 'right';
                 }
@@ -97,34 +97,38 @@ function HammerPage(element){
                 break;
 
             case 'swipeleft':
+                _self.release = false;
                 _self.hideMenu();
                 ev.gesture.stopDetect();
                 break;
 
             case 'swiperight':
+                _self.release = false;
                 _self.showMenu();
                 ev.gesture.stopDetect();
                 break;
 
             case 'release':
+                if(_self.release === true){
+                    _self.release = false;
+                    if(_self.dir == 'right' && !_self.menuVisible){
+                        if(deltaX <= (_self.menu_x / 2 )){
+                            _self.hideMenu();
+                        }else{
+                            _self.showMenu();
+                        }
+                    }else if(_self.dir == 'left' && _self.menuVisible){
+                        if(deltaX <= (_self.menu_x / 2 )){
+                            _self.showMenu();
+                        }else{
+                            _self.hideMenu();
+                        }
+                    }else{
+                        _self.hideMenu();
+                    }
 
-                if(_self.dir == 'right' && !_self.menuVisible){
-                    if(deltaX <= (_self.menu_x / 2 )){
-                        _self.hideMenu();
-                    }else{
-                        _self.showMenu();
-                    }
-                }else if(_self.dir == 'left' && _self.menuVisible){
-                    if(deltaX <= (_self.menu_x / 2 )){
-                        _self.showMenu();
-                    }else{
-                        _self.hideMenu();
-                    }
-                }else{
-                    _self.hideMenu();
+                    _self.dir = false;
                 }
-
-                _self.dir = false;
                 break;
         }
     }

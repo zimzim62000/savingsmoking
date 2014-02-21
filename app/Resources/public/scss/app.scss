@@ -28,7 +28,6 @@ body{
 }
 
 .container{
-    overflow-x: hidden;
     position: relative;
     z-index: 1;
     cursor : pointer;
@@ -36,25 +35,16 @@ body{
 }
 
 .page{
-    position: absolute;
-    display: block;
-    top: 0;
-    left:0;
-    right: 0;
-    bottom: 0;
     z-index: 100;
     background-color: $body-bg;
-    min-height: 100%;
 }
 
 .menu{
     position: absolute;
-    display: block;
+    z-index: 99;
+    padding: 75px 25px 0 30px;
     top: 0;
     left: 0;
-    bottom: 0;
-    z-index: 99;
-    padding: 75px 0 0 30px;
     background-color: $aqua;
     min-height: 100%;
     a{
