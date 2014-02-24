@@ -17,7 +17,10 @@ class UserSmokeType extends AbstractType
         for($i = 1; $i < 51; $i++){
             $number[$i] = $i;
         }
-
+        if($options['data']->getId() !== null){
+            $builder
+                ->add('userlink', null, array('label' => 'form.usersmoketype.userlink.label'));
+        }
         $builder
             ->add(
                 'number',

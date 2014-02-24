@@ -187,6 +187,6 @@ class UserSmoke
      */
     public function createUser()
     {
-        $this->userlink = urlencode($this->user->getUsername());
+        $this->userlink = urlencode(str_replace(array('@', '&', '#', '_', '-', '+', '='), '', strtolower($this->user->getUsername())));
     }
 }

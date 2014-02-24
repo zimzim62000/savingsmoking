@@ -9,3 +9,7 @@ zz_bundles_app_cigarette:
 zz_bundles_app_cigarette:
     resource: "@ZZBundlesAppBundle/Resources/config/routing/usersmoke.yml"
     prefix: /home
+
+zz_app_usersmoke_show:
+    pattern:  /{slug}
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:show" }

@@ -10,10 +10,6 @@ hwi_oauth_connect:
     resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
     prefix: /user/login
 
-zz_bundles_app:
-    resource: "@ZZBundlesAppBundle/Resources/config/routing.yml"
-    prefix:   /
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -46,3 +42,6 @@ facebook_login:
 twitter_login:
     pattern: /user/login/check-twitter
 
+zz_bundles_app:
+    resource: "@ZZBundlesAppBundle/Resources/config/routing.yml"
+    prefix:   /

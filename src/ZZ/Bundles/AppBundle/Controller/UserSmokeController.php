@@ -123,7 +123,7 @@ class UserSmokeController extends Controller
 
         $user = $usersmoke->getUser();
         $calculate = $this->container->get('zz_bundles.app.calculatesaving');
-        $calculate->setDateEnd(new \Datetime('now'))->setUser($user);
+        $calculate->setDateEnd(new \Datetime('now'))->setUserSmoke($usersmoke);
 
         return $this->render(
             'ZZBundlesAppBundle:UserSmoke:show.html.twig',
@@ -180,7 +180,7 @@ class UserSmokeController extends Controller
             )
         );
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'form.usersmoketype.submit.label'));
 
         return $form;
     }
@@ -206,7 +206,9 @@ class UserSmokeController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zz_app_usersmoke_edit', array('id' => $id)));
+            return $this->redirect(
+                $this->generateUrl('zz_app_usersmoke_show', array('slug' => $entity->getUserlink()))
+            );
         }
 
         return $this->render(
@@ -257,5 +259,78 @@ class UserSmokeController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();
+    }
+
+    public function calculateAction()
+    {
+        $entity = new UserSmoke();
+        $form = $this->createCalculateForm($entity);
+
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            )
+        );
+    }
+
+    /**
+     * Creates a new UserSmoke entity.
+     *
+     */
+    public function calculatesavingAction(Request $request)
+    {
+        /** @var $user \ZZ\Bundles\userBundle\Entity\User */
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $entity = new UserSmoke();
+        $entity->setUser($user);
+        $form = $this->createCalculateForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $calculate = $this->container->get('zz_bundles.app.calculatesaving');
+            $calculate->setDateEnd(new \Datetime('now'))->setUserSmoke($entity);
+
+            return $this->render(
+                'ZZBundlesAppBundle:UserSmoke:show.html.twig',
+                array(
+                    'savingsmoking' => $calculate->calculateSaving(),
+                    'usersmoke'     => $entity
+                )
+            );
+        }
+
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            )
+        );
+    }
+
+    /**
+     * Creates a form to create a UserSmoke entity.
+     *
+     * @param UserSmoke $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCalculateForm(UserSmoke $entity)
+    {
+        $form = $this->createForm(
+            new UserSmokeType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('zz_app_usersmoke_calculatesaving'),
+                'method' => 'POST',
+            )
+        );
+
+        $form->add('submit', 'submit', array('label' => 'form.usersmoketype.submit.label'));
+
+        return $form;
     }
 }

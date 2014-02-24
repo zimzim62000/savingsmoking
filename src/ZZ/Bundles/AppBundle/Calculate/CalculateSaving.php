@@ -5,7 +5,7 @@ namespace ZZ\Bundles\AppBundle\Calculate;
 
 class CalculateSaving
 {
-    private $user;
+    private $usersmoke;
     private $calculateNumberDay;
     private $calculateUnitPrice;
     private $calculateSavingSmoking;
@@ -24,9 +24,9 @@ class CalculateSaving
         $this->calculateInformation = $calculateInformation;
     }
 
-    public function setUser($user)
+    public function setUserSmoke($usersmoke)
     {
-        $this->user = $user;
+        $this->usersmoke = $usersmoke;
 
         return $this;
     }
@@ -41,20 +41,20 @@ class CalculateSaving
     public function calculateSaving()
     {
 
-        $this->calculateNumberDay->setDateStart($this->user->getUserSmoke()->getDateStop())->setDateEnd(
+        $this->calculateNumberDay->setDateStart($this->usersmoke->getDateStop())->setDateEnd(
             $this->dateEnd
         );
 
-        $this->calculateUnitPrice->setCigarette($this->user->getUserSmoke()->getCigarette())->setDateStop(
-            $this->user->getUserSmoke()->getDateStop()
+        $this->calculateUnitPrice->setCigarette($this->usersmoke->getCigarette())->setDateStop(
+            $this->usersmoke->getDateStop()
         );
 
         $this->calculateSavingSmoking->setPeriodes($this->calculateUnitPrice->calculate())->setUserSmoke(
-            $this->user->getUserSmoke()
+            $this->usersmoke
         );
 
         $this->calculateInformation->setSavingsmoking($this->calculateSavingSmoking->calculate())->setUsersmoke(
-            $this->user->getUserSmoke()
+            $this->usersmoke
         );
 
         return $this->calculateInformation->calculate();

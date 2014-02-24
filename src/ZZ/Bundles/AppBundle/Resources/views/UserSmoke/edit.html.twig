@@ -1,23 +1,19 @@
 {% extends '::layout.html.twig' %}
 
 {% block page %}
-    <div class="row">
+    <div class="row full-width">
         <div class="small-12 large-12 columns">
-            <h1 class="text-center title">UserSmoke edit</h1>
+            <h1 class="text-center header-title">{{ 'views.app.app.index.title1'|trans|raw }}</h1>
+            <h2 class="text-center header-title">{{ 'views.app.usersmoke.new.title'|trans }}</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="small-12 large-12 columns">
-            {{ form(edit_form) }}
-
-                        <ul class="record_actions inline-list no-bullet">
-    <li>
-        <a href="{{ path('zz_app_usersmoke') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="full-width aqua">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="text-homepage">
+                    {{ form(edit_form) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -1,14 +1,19 @@
 {% extends '::layout.html.twig' %}
 
 {% block page %}
-    <div class="row">
+    <div class="row full-width">
         <div class="small-12 large-12 columns">
-            <h1 class="text-center title">{{ 'views.app.usersmoke.new.title'|trans }}</h1>
+            <h1 class="text-center header-title">{{ 'views.app.app.index.title1'|trans|raw }}</h1>
+            <h2 class="text-center header-title">{{ 'views.app.usersmoke.new.title'|trans }}</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="small-12 large-12 columns">
-            {{ form(form) }}
+    <div class="full-width aqua">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="text-homepage">
+                    {{ form(form) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

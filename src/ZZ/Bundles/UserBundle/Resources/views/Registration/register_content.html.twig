@@ -1,18 +1,21 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
 <div class="row">
     <div class="small-12 large-12 columns">
-        <h1 class="text-center title">{{ 'layout.app.app.index.title1'|trans }}</h1>
-        <h2 class="text-center title">{{ 'layout.app.app.index.title2'|trans }}</h2>
+        <h1 class="text-center header-title-bis">{{ 'views.user.registration.register.title1'|trans }}</h1>
+        <h2 class="text-center header-title">{{ 'views.user.registration.register.title2'|trans }}</h2>
+        <h3 class="text-center header-title">{{ 'views.user.registration.register.title3'|trans }}</h3>
     </div>
 </div>
-<div class="row">
-    <div class="small-12 large-12 columns text-center">
-        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-            {{ form_widget(form) }}
-            <div>
-                <input type="submit" class="small button" value="{{ 'registration.submit'|trans }}" />
+<div class="full-width aqua">
+    <div class="row">
+        <div class="small-12 large-12 columns text-center">
+            <div class="text-homepage">
+                <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+                    {{ form_widget(form) }}
+                    <div>
+                        <input type="submit" class="small button" value="{{ 'registration.submit'|trans }}" />
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>

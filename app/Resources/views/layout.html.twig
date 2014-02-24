@@ -1,11 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block menu %}
-    <ul class="no-bullet">
+    <ul class="">
         {% block menuli %}
         <li>
             <a href="{{ path('zz_bundles_app_homepage') }}">
                 {{ 'layout.block.menu.accueil'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('zz_app_usersmoke_calculate') }}">
+                {{ 'layout.block.menu.calculate'|trans }}
             </a>
         </li>
         <li>

@@ -1,0 +1,20 @@
+views:
+    user:
+        profile:
+            show:
+                title1: "Saving Smoking"
+                title2: "Vos économies qui ne partent pas en fumée"
+                update: modifier mes informations
+                logout: déconnexion
+                saving: "modifier mes économies"
+                createsaving: "je calcul mes économies"
+            edit:
+                title1: "Saving Smoking"
+                title2: "Vos économies qui ne partent pas en fumée"
+                title3: "Modifier mes informations"
+        registration:
+            register:
+                title1: "Saving Smoking"
+                title2: "Vos économies qui ne partent pas en fumée"
+                title3: "Inscription"
+                createsaving: "je calcul mes économies"

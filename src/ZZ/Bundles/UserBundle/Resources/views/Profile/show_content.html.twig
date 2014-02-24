@@ -1,25 +1,36 @@
 
 <div class="row">
     <div class="small-12 large-12 columns">
-        <h1 class="text-center title">{{ 'layout.app.app.index.title1'|trans }}</h1>
+        <h1 class="text-center header-title-bis">{{ 'views.user.profile.show.title1'|trans }}</h1>
+        <h2 class="text-center header-title">{{ 'views.user.profile.show.title2'|trans }}</h2>
     </div>
 </div>
-<div class="row">
-    <div class="small-12 large-12 columns">
-        <h2 class="text-center title">{{ 'layout.app.app.index.title2'|trans }}</h2>
+<div class="full-width aqua">
+    <div class="row">
+        <div class="small-12 large-12 columns text-center">
+            <div class="text-homepage">
+                <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
+                <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="small-12 large-12 columns text-center">
-        <div class="fos_user_user_show">
-            <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
-            <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+        <div class="text-homepage">
+            {% if user.usersmoke.id is defined %}
+                <a class="small round button" href="{{ path('zz_app_usersmoke_edit', {'id':user.usersmoke.id}) }}">{{ 'views.user.profile.show.saving'|trans }}</a>
+            {% else %}
+                <a class="small round button" href="{{ path('zz_app_usersmoke_new') }}">{{ 'views.user.profile.show.createsaving'|trans }}</a>
+            {% endif %}
         </div>
     </div>
-    <div class="small-6 large-6 columns text-center">
-        <a href="{{ path('fos_user_profile_edit') }}">{{ 'layout.app.user.profile.update'|trans }}</a>
+</div>
+<div class="row">
+    <div class="small-6 large-4 columns text-center">
+        <a class="small round button" href="{{ path('fos_user_profile_edit') }}">{{ 'views.user.profile.show.update'|trans }}</a>
     </div>
-    <div class="small-6 large-6 columns text-center">
-        <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.app.user.profile.logout'|trans }}</a>
+    <div class="small-6 large-4 columns text-center">
+        <a class="small round button" href="{{ path('fos_user_security_logout') }}">{{ 'views.user.profile.show.logout'|trans }}</a>
     </div>
 </div>

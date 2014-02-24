@@ -2,10 +2,6 @@ zz_app_usersmoke:
     pattern:  /
     defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:index" }
 
-zz_app_usersmoke_show:
-    pattern:  /{slug}/saving
-    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:show" }
-
 zz_app_usersmoke_new:
     pattern:  /new
     defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:new" }
@@ -28,3 +24,12 @@ zz_app_usersmoke_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:delete" }
     requirements: { _method: post|delete }
+
+zz_app_usersmoke_calculate:
+    pattern:  /calculate
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:calculate" }
+
+zz_app_usersmoke_calculatesaving:
+    pattern:  /calculatesaving
+    defaults: { _controller: "ZZBundlesAppBundle:UserSmoke:calculatesaving" }
+    requirements: { _method: post }

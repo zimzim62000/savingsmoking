@@ -31,24 +31,35 @@ body {
 .menu {
   position: absolute;
   z-index: 150;
-  padding: 75px 25px 75px 30px;
   top: 0;
   left: -500px;
   background-color: #111111;
   min-height: 100%;
 }
-/* line 44, ../scss/app.scss */
-.menu a {
+/* line 43, ../scss/app.scss */
+.menu ul {
+  padding-top: 65px;
+  list-style: none;
+  margin: 0;
+  width: 100%;
+}
+/* line 48, ../scss/app.scss */
+.menu ul li {
+  width: 100%;
+  background-color: #111111;
+  padding: 10px 20px;
+}
+/* line 53, ../scss/app.scss */
+.menu ul li:hover {
+  background-color: #222222;
+}
+/* line 56, ../scss/app.scss */
+.menu ul a {
   font-size: 1.4em;
-  padding: 0.85em 0;
   color: white;
 }
-/* line 49, ../scss/app.scss */
-.menu a:hover {
-  color: #7fdbff;
-}
 
-/* line 54, ../scss/app.scss */
+/* line 63, ../scss/app.scss */
 .icon-menu {
   width: 55px;
   height: 55px;
@@ -58,7 +69,7 @@ body {
   z-index: 200;
 }
 
-/* line 63, ../scss/app.scss */
+/* line 72, ../scss/app.scss */
 h1.header-title, .title-black {
   padding: 1.5em 0 0 0;
   font-weight: bold;
@@ -66,13 +77,27 @@ h1.header-title, .title-black {
   text-shadow: rgba(127, 219, 255, 0.3) 2px 2px 0, rgba(127, 219, 255, 0.3) 2px 2px 0, rgba(127, 219, 255, 0.3) 3px 3px 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 63, ../scss/app.scss */
+  /* line 72, ../scss/app.scss */
   h1.header-title, .title-black {
     font-size: 2.75em;
   }
 }
 
-/* line 73, ../scss/app.scss */
+/* line 82, ../scss/app.scss */
+h1.header-title-bis, .title-black-bis {
+  padding: 65px 0 0 0;
+  font-weight: bold;
+  font-size: 5.25em;
+  text-shadow: rgba(127, 219, 255, 0.3) 2px 2px 0, rgba(127, 219, 255, 0.3) 2px 2px 0, rgba(127, 219, 255, 0.3) 3px 3px 0;
+}
+@media only screen and (max-width: 40em) {
+  /* line 82, ../scss/app.scss */
+  h1.header-title-bis, .title-black-bis {
+    font-size: 2.75em;
+  }
+}
+
+/* line 92, ../scss/app.scss */
 h2.header-title, .title-gray {
   padding: 0.5em 0 1.5em 0;
   font-weight: bold;
@@ -81,13 +106,13 @@ h2.header-title, .title-gray {
   font-style: italic;
 }
 @media only screen and (max-width: 40em) {
-  /* line 73, ../scss/app.scss */
+  /* line 92, ../scss/app.scss */
   h2.header-title, .title-gray {
     font-size: 1.5em;
   }
 }
 
-/* line 84, ../scss/app.scss */
+/* line 103, ../scss/app.scss */
 h3.header-title, .title-red {
   padding: 1.5em 0.5em 0.5em 0.5em;
   font-weight: bold;
@@ -96,13 +121,13 @@ h3.header-title, .title-red {
   font-style: italic;
 }
 @media only screen and (max-width: 40em) {
-  /* line 84, ../scss/app.scss */
+  /* line 103, ../scss/app.scss */
   h3.header-title, .title-red {
     font-size: 1em;
   }
 }
 
-/* line 95, ../scss/app.scss */
+/* line 114, ../scss/app.scss */
 .animateMenu {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -111,46 +136,46 @@ h3.header-title, .title-red {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 99, ../scss/app.scss */
+/* line 118, ../scss/app.scss */
 img.img-connect {
   width: 2em;
   height: 2em;
 }
 
-/* line 104, ../scss/app.scss */
+/* line 123, ../scss/app.scss */
 div.text-homepage {
   padding: 2.5em;
 }
 @media only screen and (max-width: 40em) {
-  /* line 104, ../scss/app.scss */
+  /* line 123, ../scss/app.scss */
   div.text-homepage {
     padding: 2em 0.75em;
   }
 }
 
-/* line 110, ../scss/app.scss */
+/* line 129, ../scss/app.scss */
 div.button-homepage {
   padding: 0.5em 0 2.5em 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 110, ../scss/app.scss */
+  /* line 129, ../scss/app.scss */
   div.button-homepage {
     padding: 0.5em 0.75em 2.5em 0;
   }
 }
 
-/* line 116, ../scss/app.scss */
+/* line 135, ../scss/app.scss */
 div.pagefooter {
   padding: 1.5em 0 1.5em 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 116, ../scss/app.scss */
+  /* line 135, ../scss/app.scss */
   div.pagefooter {
     padding: 0.5em 0.75em 1em 0;
   }
 }
 
-/* line 123, ../scss/app.scss */
+/* line 142, ../scss/app.scss */
 footer {
   position: relative;
   min-height: 150px;
@@ -158,92 +183,92 @@ footer {
 }
 
 /* Color */
-/* line 130, ../scss/app.scss */
+/* line 149, ../scss/app.scss */
 .white {
   background-color: white;
 }
 
-/* line 133, ../scss/app.scss */
+/* line 152, ../scss/app.scss */
 .blue {
   background-color: #0074d9;
 }
 
-/* line 136, ../scss/app.scss */
+/* line 155, ../scss/app.scss */
 .aqua {
   background-color: #7fdbff;
 }
 
-/* line 139, ../scss/app.scss */
+/* line 158, ../scss/app.scss */
 .red {
   background-color: #ff4136;
 }
 
-/* line 142, ../scss/app.scss */
+/* line 161, ../scss/app.scss */
 .silver {
   background-color: #dddddd;
 }
 
-/* line 145, ../scss/app.scss */
+/* line 164, ../scss/app.scss */
 .orange {
   background-color: #ff851b;
 }
 
-/* line 148, ../scss/app.scss */
+/* line 167, ../scss/app.scss */
 .yellow {
   background-color: #ffdc00;
 }
 
-/* line 151, ../scss/app.scss */
+/* line 170, ../scss/app.scss */
 .black {
   background-color: #111111;
 }
 
-/* line 154, ../scss/app.scss */
+/* line 173, ../scss/app.scss */
 .smallblack {
   background-color: #222222;
 }
 
-/* line 159, ../scss/app.scss */
+/* line 178, ../scss/app.scss */
 .white-text {
   color: white;
 }
 
-/* line 162, ../scss/app.scss */
+/* line 181, ../scss/app.scss */
 .aqua-text {
   color: #7fdbff;
 }
 
-/* line 165, ../scss/app.scss */
+/* line 184, ../scss/app.scss */
 .blue-text {
   color: #0074d9;
 }
 
-/* line 168, ../scss/app.scss */
+/* line 187, ../scss/app.scss */
 .red-text {
   color: #ff4136;
 }
 
-/* line 171, ../scss/app.scss */
+/* line 190, ../scss/app.scss */
 .silver-text {
   color: #dddddd;
 }
 
-/* line 174, ../scss/app.scss */
+/* line 193, ../scss/app.scss */
 .orange-text {
   color: #ff851b;
 }
 
-/* line 177, ../scss/app.scss */
+/* line 196, ../scss/app.scss */
 .yellow-text {
   color: #ffdc00;
 }
 
-/* line 180, ../scss/app.scss */
+/* line 199, ../scss/app.scss */
 .black-text {
   color: #111111;
 }
 
-/* line 183, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 .smallblack-text {
   color: #222222;
 }

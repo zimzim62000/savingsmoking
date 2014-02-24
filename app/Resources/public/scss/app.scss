@@ -36,18 +36,27 @@ body{
 .menu{
     position: absolute;
     z-index: 150;
-    padding: 75px 25px 75px 30px;
     top: 0;
     left: -500px;
     background-color: $black;
     min-height: 100%;
-    a{
-        font-size: 1.4em;
-        padding: 0.85em 0;
-        color: $white;
-    }
-    a:hover{
-        color: $aqua;
+    ul{
+        padding-top: 65px;
+        list-style: none;
+        margin :0;
+        width: 100%;
+        li{
+            width: 100%;
+            background-color: $black;
+            padding: 10px 20px;
+        }
+        li:hover{
+            background-color: $smallblack;
+        }
+        a{
+            font-size: 1.4em;
+            color: $white;
+        }
     }
 }
 
@@ -62,6 +71,16 @@ body{
 
 h1.header-title, .title-black{
     padding: 1.5em 0 0 0;
+    font-weight: bold;
+    font-size: 5.25em;
+    @include text-shadow(rgba($aqua, 0.3) 2px 2px 0, rgba($aqua, 0.3) 2px 2px 0, rgba($aqua, 0.3) 3px 3px 0);
+    @media #{$small-only} {
+        font-size: 2.75em;
+    }
+}
+
+h1.header-title-bis, .title-black-bis{
+    padding: 65px 0 0 0;
     font-weight: bold;
     font-size: 5.25em;
     @include text-shadow(rgba($aqua, 0.3) 2px 2px 0, rgba($aqua, 0.3) 2px 2px 0, rgba($aqua, 0.3) 3px 3px 0);
@@ -183,3 +202,4 @@ footer{
 .smallblack-text{
     color: $smallblack;
 }
+

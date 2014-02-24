@@ -33,7 +33,9 @@ views:
             new:
                 title: "Calculer mes économies"
             show:
-                title: "mes économies"
+                title1: "Saving Smoking"
+                title2: "Regardez vos économies"
+                title3: "Parcours de %username%"
                 time: "que je respire"
                 saving: "d'économiser !"
                 benefit: "arreter de fumer en quelques chiffres..."
@@ -58,7 +60,8 @@ layout:
             account: "mes infos"
             logout: "déconnexion"
             login: "connexion"
-            cigarette: "Cigarettes"
+            cigarette: "cigarettes"
+            calculate: "calcul d'économie"
         pagefooter:
             credit: "savingsmoking.com"
 
@@ -76,6 +79,8 @@ form:
                 month: Moi
                 day: Jour
     usersmoketype:
+        userlink:
+            label: "Lien de votre profil ( URL )"
         number:
             label: Nombre de cigarettes fumés en moyenne par jour
             emptyvalue: "nombre"
