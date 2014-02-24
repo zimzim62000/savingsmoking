@@ -53,11 +53,12 @@ views:
 layout:
     block:
         menu:
-            accueil: "Accueil"
-            account: "Mon compte"
-            logout: "Se déconnecter"
-            login: "Se connecter"
-            cigarette: "Cigarette"
+            accueil: "accueil"
+            usersmoke: "nos parcours"
+            account: "mes infos"
+            logout: "déconnexion"
+            login: "connexion"
+            cigarette: "Cigarettes"
         pagefooter:
             credit: "savingsmoking.com"
 

@@ -27,12 +27,13 @@
 }());
 
 
-function HammerPage(element){
+function HammerPage(elementdrag, elementmove){
 
     "use strict";
 
     var _self = this;
-    this.$element = $(element);
+    this.$elementdrag = $(elementdrag);
+    this.$elementmove = $(elementmove);
     this.dir = false;
     this.release = false;
     this.init = function(){
@@ -44,7 +45,8 @@ function HammerPage(element){
 
     this.resizeContainer = function(){
         this.hideMenu();
-        this.menu_x = Math.floor(parseInt($('#menu').css('width').replace('px', '')));
+        this.menu_x = Math.floor(parseInt(this.$elementmove.css('width').replace('px', '')));
+        this.$elementmove.css('left', '-' + this.menu_x + 'px');
     };
 
     this.animateMenu = function($element, deltaX, delay){
@@ -79,7 +81,7 @@ function HammerPage(element){
                 }
                 if(_self.menuVisible){
                     if(_self.menu_x >= deltaX ){
-                        _self.animateMenu(_self.$element, (_self.menu_x - deltaX), 0);
+                        _self.animateMenu(_self.$elementmove, (_self.menu_x - deltaX), 0);
                     }
                 }
                 break;
@@ -91,7 +93,7 @@ function HammerPage(element){
                 }
                 if(!_self.menuVisible){
                     if(_self.menu_x >= deltaX ){
-                        _self.animateMenu(_self.$element, deltaX, 0);
+                        _self.animateMenu(_self.$elementmove, deltaX, 0);
                     }
                 }
                 break;
@@ -133,7 +135,7 @@ function HammerPage(element){
         }
     }
 
-    var hammertime = new Hammer(this.$element[0], {
+    var hammertime = new Hammer(this.$elementdrag[0], {
         drag: true,
         drag_block_horizontal: false,
         drag_block_vertical: false,
@@ -147,19 +149,19 @@ function HammerPage(element){
     hammertime.on("release dragleft dragright swipeleft swiperight", handleHammer);
 
     this.showMenu = function(){
-        _self.animateMenu(_self.$element, _self.menu_x, 200);
+        _self.animateMenu(_self.$elementmove, _self.menu_x, 200);
         _self.menuVisible = true;
     };
 
     this.hideMenu = function(){
-        _self.animateMenu(_self.$element, 0, 200);
+        _self.animateMenu(_self.$elementmove, 0, 200);
         _self.menuVisible = false;
     };
 }
 
 $(document).ready(function(){
 
-    var mypage = new HammerPage("#page");
+    var mypage = new HammerPage("#page", "#menu");
     mypage.init();
 
     $('#icon-menu').click(function(){

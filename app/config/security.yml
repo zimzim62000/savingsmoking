@@ -55,5 +55,6 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/home/*, role: ROLE_USER }
+        - { path: ^/home/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/home/new/$ role: ROLE_USER }
         - { path: ^/cigarette/*, role: ROLE_ADMIN }

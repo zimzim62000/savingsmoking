@@ -21,29 +21,16 @@ class UserSmokeController extends Controller
      */
     public function indexAction()
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-            $entities = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findAll();
+        $entities = $em->getRepository('ZZBundlesAppBundle:UserSmoke')->findAll();
 
-            return $this->render(
-                'ZZBundlesAppBundle:UserSmoke:index.html.twig',
-                array(
-                    'entities' => $entities,
-                )
-            );
-        } else {
-            /** @var $user \ZZ\Bundles\userBundle\Entity\User */
-            $user = $this->container->get('security.context')->getToken()->getUser();
-            if ($user->getUsersmoke() === null) {
-                return $this->redirect($this->generateUrl('zz_app_usersmoke_new'));
-            } else {
-                return $this->redirect(
-                    $this->generateUrl('zz_app_usersmoke_show', array('slug' => $user->getUsersmoke()->getUserlink()))
-                );
-            }
-        }
-
+        return $this->render(
+            'ZZBundlesAppBundle:UserSmoke:index.html.twig',
+            array(
+                'entities' => $entities,
+            )
+        );
     }
 
     /**

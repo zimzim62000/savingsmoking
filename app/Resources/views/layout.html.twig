@@ -8,6 +8,11 @@
                 {{ 'layout.block.menu.accueil'|trans }}
             </a>
         </li>
+        <li>
+            <a href="{{ path('zz_app_usersmoke') }}">
+                {{ 'layout.block.menu.usersmoke'|trans }}
+            </a>
+        </li>
         {% if is_granted('ROLE_USER') %}
             <li>
                 <a href="{{ path('fos_user_profile_show') }}">
@@ -38,13 +43,11 @@
 {% endblock menu %}
 
 {% block footer %}
-    <div class="full-width black white-text">
-        <div class="row">
-            <div class="small-12 columns text-right">
-                <div class="pagefooter">
-                    {{ 'layout.block.pagefooter.credit'|trans }}
-                </div>
+    <footer class="row full-width black white-text">
+        <div class="small-12 columns text-right">
+            <div class="pagefooter">
+                {{ 'layout.block.pagefooter.credit'|trans }}
             </div>
         </div>
-    </div>
+    </footer>
 {% endblock footer %}

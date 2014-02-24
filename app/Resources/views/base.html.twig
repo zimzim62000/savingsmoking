@@ -25,20 +25,18 @@
     <body>
         {% block body %}
             {% block container %}
-                <div id="container" class="container">
-                    {% block iconmenu %}
-                        <div class="icon-menu" id="icon-menu">
-                            <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
-                        </div>
+                {% block iconmenu %}
+                    <div class="icon-menu" id="icon-menu">
+                        <img src="{{ asset('bundles/zzbundlesapp/images/menu.png') }}"/>
+                    </div>
+                {% endblock %}
+                <div class="page" id="page">
+                    {% block page %}
                     {% endblock %}
-                    <div class="page" id="page">
-                        {% block page %}
-                        {% endblock %}
-                    </div>
-                    <div class="menu" id="menu">
-                        {% block menu %}
-                        {% endblock %}
-                    </div>
+                </div>
+                <div class="menu" id="menu">
+                    {% block menu %}
+                    {% endblock %}
                 </div>
             {% endblock container %}
             {% block footer %}
