@@ -20,7 +20,11 @@
             {% if form.vars.attr['no-label'] is defined  and form.vars.label == '__name__label__' %}
             {% else %}
                 {% if form.vars.attr['label-inline'] is defined %}
-                    {{ form_label(form) }}
+                    {% if(form.vars.errors|length > 0) %}
+                        {{ form_label(form, {'attr': {'class' : 'error'} }) }}
+                    {% else %}
+                        {{ form_label(form) }}
+                    {% endif %}
                 {% else %}
                     {{ block('form_label_start') }}
                 {% endif %}
@@ -44,6 +48,9 @@
         {% if label is not sameas(false) %}
             {% if not compound %}
                 {% set label_attr = label_attr|merge({'for': id}) %}
+            {% endif %}
+            {% if form.vars.errors|length > 0 %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' error')|trim}) %}
             {% endif %}
             {% if required %}
                 {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
